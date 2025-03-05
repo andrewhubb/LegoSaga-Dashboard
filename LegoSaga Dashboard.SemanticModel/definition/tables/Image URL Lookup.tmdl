@@ -1,0 +1,44 @@
+table 'Image URL Lookup'
+	lineageTag: 7aecbd2b-ac36-4eff-a7f8-67d1fad12948
+
+	column 'Image URL ID'
+		dataType: int64
+		formatString: 0
+		lineageTag: 5e358865-8b73-4e43-915c-2399bce6e16e
+		summarizeBy: none
+		sourceColumn: Image URL ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column imageURL
+		dataType: string
+		lineageTag: 24a47aeb-dccf-4bd5-91dd-0e0b9ab3c90e
+		dataCategory: ImageUrl
+		summarizeBy: none
+		sourceColumn: imageURL
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Image URL Lookup' = m
+		mode: import
+		source =
+				let
+				    Source = lego_sets_source,
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"set_id", type text}, {"name", type text}, {"year", Int64.Type}, {"theme", type text}, {"subtheme", type text}, {"themeGroup", type text}, {"category", type text}, {"pieces", Int64.Type}, {"minifigs", type text}, {"agerange_min", type text}, {"US_retailPrice", type text}, {"bricksetURL", type text}, {"thumbnailURL", type text}, {"imageURL", type text}}),
+				    #"Removed Other Columns" = Table.SelectColumns(#"Changed Type",{"imageURL"}),
+				    #"Added Conditional Column1" = Table.AddColumn(#"Removed Other Columns", "New imageURL", each if [imageURL] = "" then "https://photos.onedrive.com/share/EFCFA07183130BE2!1319829?cid=EFCFA07183130BE2&resId=EFCFA07183130BE2!1319829&authkey=!AFe3fNDMvNCrNvE&ithint=photo&e=8JglZh" else [imageURL]),
+				    #"Removed Columns4" = Table.RemoveColumns(#"Added Conditional Column1",{"imageURL"}),
+				    #"Changed Type2" = Table.TransformColumnTypes(#"Removed Columns4",{{"New imageURL", type text}}),
+				    #"Renamed Columns" = Table.RenameColumns(#"Changed Type2",{{"New imageURL", "imageURL"}}),
+				    #"Removed Duplicates" = Table.Distinct(#"Renamed Columns"),
+				    #"Added Index" = Table.AddIndexColumn(#"Removed Duplicates", "Index", 1, 1, Int64.Type),
+				    #"Reordered Columns4" = Table.ReorderColumns(#"Added Index",{"Index", "imageURL"}),
+				    #"Renamed Columns1" = Table.RenameColumns(#"Reordered Columns4",{{"Index", "Image URL ID"}})
+				in
+				    #"Renamed Columns1"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

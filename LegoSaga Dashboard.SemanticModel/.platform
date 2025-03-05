@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "SemanticModel",
+    "displayName": "LegoSaga Dashboard"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "17a3fc52-83d4-481e-92fb-89dec101d483"
+  }
+}

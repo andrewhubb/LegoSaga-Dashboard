@@ -1,0 +1,256 @@
+{
+  "version": "1.1.0",
+  "diagrams": [
+    {
+      "ordinal": 0,
+      "scrollPosition": {
+        "x": 0,
+        "y": 271
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 1012.6687873337169,
+            "y": 1634.7357318229683
+          },
+          "nodeIndex": "Category Lookup",
+          "nodeLineageTag": "75673d89-9a27-4283-b8d3-3759b86f0900",
+          "size": {
+            "height": 128,
+            "width": 234
+          },
+          "zIndex": 1
+        },
+        {
+          "location": {
+            "x": 758.586017786112,
+            "y": 2033.4131534108069
+          },
+          "nodeIndex": "lego_sets",
+          "nodeLineageTag": "228a9ed5-f6c0-473a-b1df-829cb25750bb",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 2
+        },
+        {
+          "location": {
+            "x": 245,
+            "y": 1630.8777707767927
+          },
+          "nodeIndex": "SubTheme Lookup",
+          "nodeLineageTag": "5c41330f-2211-426f-93be-bfa352186fec",
+          "size": {
+            "height": 128,
+            "width": 234
+          },
+          "zIndex": 8
+        },
+        {
+          "location": {
+            "x": 503.56299498280725,
+            "y": 1633.9235352625233
+          },
+          "nodeIndex": "Theme Group Lookup",
+          "nodeLineageTag": "9254058b-58ca-49f3-ae8b-02d3c07dfb4a",
+          "size": {
+            "height": 128,
+            "width": 234
+          },
+          "zIndex": 3
+        },
+        {
+          "location": {
+            "x": 761.04316936159921,
+            "y": 1633.6882348233921
+          },
+          "nodeIndex": "Theme Lookup",
+          "nodeLineageTag": "7ccdda0a-6ef2-4dc0-9166-065dce5e53d9",
+          "size": {
+            "height": 128,
+            "width": 234
+          },
+          "zIndex": 4
+        },
+        {
+          "location": {
+            "x": 0,
+            "y": 1628.6683443366651
+          },
+          "nodeIndex": "Brickset URL Lookup",
+          "nodeLineageTag": "b673bc92-0d0a-41d5-9990-8840b748ab51",
+          "size": {
+            "height": 128,
+            "width": 219
+          },
+          "zIndex": 5
+        },
+        {
+          "location": {
+            "x": 1267.6687873337169,
+            "y": 1632.6683443366651
+          },
+          "nodeIndex": "Image URL Lookup",
+          "nodeLineageTag": "7aecbd2b-ac36-4eff-a7f8-67d1fad12948",
+          "size": {
+            "height": 128,
+            "width": 234
+          },
+          "zIndex": 6
+        },
+        {
+          "location": {
+            "x": 1528.6687873337169,
+            "y": 1629.6683443366651
+          },
+          "nodeIndex": "Thumbnail URL Lookup",
+          "nodeLineageTag": "aad4324d-77f9-4582-aea5-999a8b4e23a1",
+          "size": {
+            "height": 128,
+            "width": 234
+          },
+          "zIndex": 7
+        },
+        {
+          "location": {
+            "x": 1961.6687873337169,
+            "y": 2077.8649284569169
+          },
+          "nodeIndex": "Metrics",
+          "nodeLineageTag": "59451230-592e-4847-9bef-52bcc1b4ae2d",
+          "size": {
+            "height": 104,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1966.6687873337169,
+            "y": 2198.7770182485074
+          },
+          "nodeIndex": "Top N Table",
+          "nodeLineageTag": "b427bf7f-6906-464d-aa4a-920b840f6e3c",
+          "size": {
+            "height": 104,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1964.6687873337169,
+            "y": 1442.6451529358928
+          },
+          "nodeIndex": "_01 - Core Measures",
+          "nodeLineageTag": "1884a66d-061a-4899-adc4-8db39efafc27",
+          "size": {
+            "height": 104,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1965.6687873337169,
+            "y": 1567.6451529358928
+          },
+          "nodeIndex": "_02 - Metrics",
+          "nodeLineageTag": "d8b17002-b57a-4449-92f7-ae1e0acc5b26",
+          "size": {
+            "height": 104,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1966.6687873337169,
+            "y": 1688.6451529358928
+          },
+          "nodeIndex": "_03 - Data Labels & Titles",
+          "nodeLineageTag": "c889b54a-76ab-4006-a904-e6f34535bd85",
+          "size": {
+            "height": 104,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1967.6687873337169,
+            "y": 1810.9473549669715
+          },
+          "nodeIndex": "_04 - Summary Text",
+          "nodeLineageTag": "e001356c-b01e-458e-ba58-6f8a3a3a2635",
+          "size": {
+            "height": 104,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1962.6687873337169,
+            "y": 1943.0806125835156
+          },
+          "nodeIndex": "_05 - Dynamic Title & SubTitle Measures",
+          "nodeLineageTag": "ca7f449c-29c0-4aa1-bfc6-e7d08debef9a",
+          "size": {
+            "height": 104,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 2251.6687873337169,
+            "y": 1324.6121401387918
+          },
+          "nodeIndex": "Tooltip Table",
+          "nodeLineageTag": "8db3f3e2-38bc-49f2-b184-439bed4d34c8",
+          "size": {
+            "height": 128,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 2535.6687873337169,
+            "y": 1133.9201400200632
+          },
+          "nodeIndex": "Scatterplot Tooltip Table",
+          "nodeLineageTag": "a9501af2-0c9d-4acf-a22e-f52aae74cbef",
+          "size": {
+            "height": 128,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 2819.6687873337169,
+            "y": 827.71988670205951
+          },
+          "nodeIndex": "lego_sets_source",
+          "nodeLineageTag": "3ce67b87-9208-4863-8ffc-acf3bc834ebe",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        }
+      ],
+      "name": "All tables",
+      "zoomValue": 100,
+      "pinKeyFieldsToTop": false,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
+    }
+  ],
+  "selectedDiagram": "All tables",
+  "defaultDiagram": "All tables"
+}

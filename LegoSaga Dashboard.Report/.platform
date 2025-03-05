@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "LegoSaga Dashboard"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "476db3c6-61b0-4392-8167-32e17519da5b"
+  }
+}

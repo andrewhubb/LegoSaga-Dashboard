@@ -1,0 +1,206 @@
+table lego_sets
+	lineageTag: 228a9ed5-f6c0-473a-b1df-829cb25750bb
+
+	column set_id
+		dataType: string
+		lineageTag: 10b226be-6329-48f2-8f0b-539145ba5fee
+		summarizeBy: none
+		sourceColumn: set_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column name
+		dataType: string
+		lineageTag: c42122ce-b72b-48cf-a366-23202d947d55
+		summarizeBy: none
+		sourceColumn: name
+
+		annotation SummarizationSetBy = Automatic
+
+	column year
+		dataType: int64
+		formatString: 0
+		lineageTag: 551cd1ba-6927-4e34-af74-8c3971d28bd0
+		summarizeBy: sum
+		sourceColumn: year
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Theme ID'
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: e222423f-3050-478f-8fb3-f22674191683
+		summarizeBy: none
+		sourceColumn: Theme ID
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'SubTheme ID'
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 6efb41a5-79d4-458a-bb24-e8fae9c7dbaf
+		summarizeBy: none
+		sourceColumn: SubTheme ID
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'ThemeGroup ID'
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 02f279f2-2b1f-4b88-bab4-93c1ecc042f0
+		summarizeBy: none
+		sourceColumn: ThemeGroup ID
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Category ID'
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 6b26654e-8f7b-4d3d-b683-57ac4c4f20fa
+		summarizeBy: none
+		sourceColumn: Category ID
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column pieces
+		dataType: int64
+		formatString: #,0
+		lineageTag: cfaef289-57b8-4a75-889f-e3412cfb961e
+		summarizeBy: sum
+		sourceColumn: pieces
+
+		annotation SummarizationSetBy = Automatic
+
+	column minifigs
+		dataType: int64
+		formatString: 0
+		lineageTag: fb2dc54d-8f24-4237-abb6-49faf013a8ad
+		summarizeBy: sum
+		sourceColumn: minifigs
+
+		annotation SummarizationSetBy = Automatic
+
+	column agerange_min
+		dataType: int64
+		formatString: 0
+		lineageTag: 04e6a14a-7923-4f8b-859f-38957dd1646a
+		summarizeBy: sum
+		sourceColumn: agerange_min
+
+		annotation SummarizationSetBy = Automatic
+
+	column US_retailPrice
+		dataType: decimal
+		formatString: \$#,0;(\$#,0);\$#,0
+		lineageTag: f422d960-5e50-427d-82f9-6494cf63bc88
+		summarizeBy: sum
+		sourceColumn: US_retailPrice
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	column 'Thumbnail URL ID'
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: b5b12689-91fc-46f7-9666-c767f0b1e2a4
+		summarizeBy: none
+		sourceColumn: Thumbnail URL ID
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Image URL ID'
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: f2600d0d-2903-430b-851f-b6c3e5df81ec
+		summarizeBy: none
+		sourceColumn: Image URL ID
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Brickset URL ID'
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 1293beb4-8384-4df3-b2b5-7915acc751fa
+		summarizeBy: none
+		sourceColumn: Brickset URL ID
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Age Group'
+		dataType: string
+		lineageTag: cd08139c-abe0-4af3-a22b-b33da158e436
+		summarizeBy: none
+		sourceColumn: Age Group
+
+		annotation SummarizationSetBy = Automatic
+
+	partition lego_sets = m
+		mode: import
+		source =
+				let
+				    Source = lego_sets_source,
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"set_id", type text}, {"name", type text}, {"year", Int64.Type}, {"theme", type text}, {"subtheme", type text}, {"themeGroup", type text}, {"category", type text}, {"pieces", Int64.Type}, {"minifigs", type text}, {"agerange_min", type text}, {"US_retailPrice", type text}, {"bricksetURL", type text}, {"thumbnailURL", type text}, {"imageURL", type text}}),
+				    #"Replaced Value" = Table.ReplaceValue(#"Changed Type","","No SubTheme",Replacer.ReplaceValue,{"subtheme"}),
+				    #"Merged Queries" = Table.NestedJoin(#"Replaced Value", {"theme"}, #"Theme Lookup", {"theme"}, "Theme Lookup", JoinKind.LeftOuter),
+				    #"Expanded Theme Lookup" = Table.ExpandTableColumn(#"Merged Queries", "Theme Lookup", {"Theme ID"}, {"Theme ID"}),
+				    #"Reordered Columns" = Table.ReorderColumns(#"Expanded Theme Lookup",{"set_id", "name", "year", "Theme ID", "theme", "subtheme", "themeGroup", "category", "pieces", "minifigs", "agerange_min", "US_retailPrice", "bricksetURL", "thumbnailURL", "imageURL"}),
+				    #"Removed Columns" = Table.RemoveColumns(#"Reordered Columns",{"theme"}),
+				    #"Merged Queries1" = Table.NestedJoin(#"Removed Columns", {"subtheme"}, #"SubTheme Lookup", {"subtheme"}, "SubTheme Lookup", JoinKind.LeftOuter),
+				    #"Expanded SubTheme Lookup" = Table.ExpandTableColumn(#"Merged Queries1", "SubTheme Lookup", {"SubTheme ID"}, {"SubTheme ID"}),
+				    #"Reordered Columns1" = Table.ReorderColumns(#"Expanded SubTheme Lookup",{"set_id", "name", "year", "Theme ID", "SubTheme ID", "subtheme", "themeGroup", "category", "pieces", "minifigs", "agerange_min", "US_retailPrice", "bricksetURL", "thumbnailURL", "imageURL"}),
+				    #"Removed Columns1" = Table.RemoveColumns(#"Reordered Columns1",{"subtheme"}),
+				    #"Merged Queries2" = Table.NestedJoin(#"Removed Columns1", {"themeGroup"}, #"Theme Group Lookup", {"themeGroup"}, "Theme Group Lookup", JoinKind.LeftOuter),
+				    #"Expanded Theme Group Lookup" = Table.ExpandTableColumn(#"Merged Queries2", "Theme Group Lookup", {"ThemeGroup ID"}, {"ThemeGroup ID"}),
+				    #"Reordered Columns2" = Table.ReorderColumns(#"Expanded Theme Group Lookup",{"set_id", "name", "year", "Theme ID", "SubTheme ID", "ThemeGroup ID", "themeGroup", "category", "pieces", "minifigs", "agerange_min", "US_retailPrice", "bricksetURL", "thumbnailURL", "imageURL"}),
+				    #"Removed Columns2" = Table.RemoveColumns(#"Reordered Columns2",{"themeGroup"}),
+				    #"Merged Queries3" = Table.NestedJoin(#"Removed Columns2", {"category"}, #"Category Lookup", {"category"}, "Category Lookup", JoinKind.LeftOuter),
+				    #"Expanded Category Lookup" = Table.ExpandTableColumn(#"Merged Queries3", "Category Lookup", {"Category ID"}, {"Category ID"}),
+				    #"Reordered Columns3" = Table.ReorderColumns(#"Expanded Category Lookup",{"set_id", "name", "year", "Theme ID", "SubTheme ID", "ThemeGroup ID", "Category ID", "category", "pieces", "minifigs", "agerange_min", "US_retailPrice", "bricksetURL", "thumbnailURL", "imageURL"}),
+				    #"Removed Columns3" = Table.RemoveColumns(#"Reordered Columns3",{"category"}),
+				    #"Added Conditional Column" = Table.AddColumn(#"Removed Columns3", "New thumbnailURL", each if [thumbnailURL] = "" then "https://photos.onedrive.com/share/EFCFA07183130BE2!1319829?cid=EFCFA07183130BE2&resId=EFCFA07183130BE2!1319829&authkey=!AFe3fNDMvNCrNvE&ithint=photo&e=8JglZh" else [thumbnailURL]),
+				    #"Changed Type1" = Table.TransformColumnTypes(#"Added Conditional Column",{{"New thumbnailURL", type text}}),
+				    #"Added Conditional Column1" = Table.AddColumn(#"Changed Type1", "New imageURL", each if [imageURL] = "" then "https://1drv.ms/i/s!AuILE4NxoM_v0McVV7d80My80Ks28Q?e=8JglZh" else [imageURL]),
+				    #"Removed Columns4" = Table.RemoveColumns(#"Added Conditional Column1",{"thumbnailURL", "imageURL"}),
+				    #"Changed Type2" = Table.TransformColumnTypes(#"Removed Columns4",{{"New imageURL", type text}}),
+				    #"Renamed Columns" = Table.RenameColumns(#"Changed Type2",{{"New thumbnailURL", "thumbnailURL"}, {"New imageURL", "imageURL"}}),
+				    #"Merged Queries4" = Table.NestedJoin(#"Renamed Columns", {"thumbnailURL"}, #"Thumbnail URL Lookup", {"thumbnailURL"}, "Thumbnail URL Lookup", JoinKind.LeftOuter),
+				    #"Expanded Thumbnail URL Lookup" = Table.ExpandTableColumn(#"Merged Queries4", "Thumbnail URL Lookup", {"Thumbnail URL ID"}, {"Thumbnail URL ID"}),
+				    #"Merged Queries5" = Table.NestedJoin(#"Expanded Thumbnail URL Lookup", {"imageURL"}, #"Image URL Lookup", {"imageURL"}, "Image URL Lookup", JoinKind.LeftOuter),
+				    #"Expanded Image URL Lookup" = Table.ExpandTableColumn(#"Merged Queries5", "Image URL Lookup", {"Image URL ID"}, {"Image URL ID"}),
+				    #"Removed Columns5" = Table.RemoveColumns(#"Expanded Image URL Lookup",{"thumbnailURL", "imageURL"}),
+				    #"Merged Queries6" = Table.NestedJoin(#"Removed Columns5", {"bricksetURL"}, #"Brickset URL Lookup", {"bricksetURL"}, "Brickset URL Lookup", JoinKind.LeftOuter),
+				    #"Expanded Brickset URL Lookup" = Table.ExpandTableColumn(#"Merged Queries6", "Brickset URL Lookup", {"Brickset URL ID"}, {"Brickset URL ID"}),
+				    #"Removed Columns6" = Table.RemoveColumns(#"Expanded Brickset URL Lookup",{"bricksetURL"}),
+				    #"Changed Type3" = Table.TransformColumnTypes(#"Removed Columns6",{{"US_retailPrice", Currency.Type}, {"minifigs", Int64.Type}, {"agerange_min", Int64.Type}}),
+				    #"Added Custom" = Table.AddColumn(#"Changed Type3", "Age Group", each if [agerange_min] = null then "No Age Group" else if [agerange_min] <= 3 then "1.5-3 yrs" else if [agerange_min] <= 7 then "4-7 yrs" else if [agerange_min] <= 12 then "8-12 yrs" else if [agerange_min] < 16 then "12-16 yrs" else if [agerange_min] < 18 then "16-18 yrs" else "18+ yrs"),
+				    #"Changed Type4" = Table.TransformColumnTypes(#"Added Custom",{{"Age Group", type text}})
+				in
+				    #"Changed Type4"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Exception
+

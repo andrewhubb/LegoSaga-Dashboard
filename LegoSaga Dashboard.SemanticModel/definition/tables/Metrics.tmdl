@@ -1,0 +1,38 @@
+table Metrics
+	lineageTag: 59451230-592e-4847-9bef-52bcc1b4ae2d
+
+	column Metric
+		dataType: string
+		lineageTag: e75a07f1-9faf-4ed0-8c9c-82a2342dcdec
+		summarizeBy: none
+		sourceColumn: Metric
+		sortByColumn: Index
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column Index
+		dataType: int64
+		formatString: 0
+		lineageTag: f9e8fc55-8f35-453a-9d53-22992dfde775
+		summarizeBy: sum
+		sourceColumn: Index
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Metrics = m
+		mode: import
+		source =
+				let
+				    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i45WCk4tKVaK1YlWcixLVwhKLUnMzFEIKMpMTgULBmSmJqdC5H0z8zIV3DLTS4ugAs6JJanp+UWZUG5IRmpuqoJ7UX5pAZIAhBlcmqQL48YCAA==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Metric = _t]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"Metric", type text}}),
+				    #"Added Index" = Table.AddIndexColumn(#"Changed Type", "Index", 1, 1, Int64.Type),
+				    #"Reordered Columns" = Table.ReorderColumns(#"Added Index",{"Index", "Metric"})
+				in
+				    #"Reordered Columns"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

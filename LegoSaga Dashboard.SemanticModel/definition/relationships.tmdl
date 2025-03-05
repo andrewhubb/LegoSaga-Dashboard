@@ -1,0 +1,36 @@
+relationship 504f4f21-7e90-453e-b4af-404b64c92f1f
+	crossFilteringBehavior: bothDirections
+	fromColumn: lego_sets.'Theme ID'
+	toColumn: 'Theme Lookup'.'Theme ID'
+
+relationship 7482df80-782b-4e60-a473-f10f8d527a2f
+	crossFilteringBehavior: bothDirections
+	fromColumn: lego_sets.'SubTheme ID'
+	toColumn: 'SubTheme Lookup'.'SubTheme ID'
+
+relationship 327f16cd-5f0b-4dbb-948a-24ce99e5dd95
+	crossFilteringBehavior: bothDirections
+	fromColumn: lego_sets.'ThemeGroup ID'
+	toColumn: 'Theme Group Lookup'.'ThemeGroup ID'
+
+relationship 5e133251-4af8-463d-8cf2-30b8230a2b5a
+	crossFilteringBehavior: bothDirections
+	fromColumn: lego_sets.'Category ID'
+	toColumn: 'Category Lookup'.'Category ID'
+
+relationship de3bdad3-51af-4c5e-b5e5-0f1c44562431
+	crossFilteringBehavior: bothDirections
+	fromColumn: lego_sets.'Thumbnail URL ID'
+	toColumn: 'Thumbnail URL Lookup'.'Thumbnail URL ID'
+
+relationship f4e5063f-4857-427c-ab31-95b9351b234c
+	crossFilteringBehavior: bothDirections
+	fromColumn: lego_sets.'Image URL ID'
+	toColumn: 'Image URL Lookup'.'Image URL ID'
+
+relationship c2a930e2-cacb-4ad5-bb88-bfa563402885
+	crossFilteringBehavior: bothDirections
+	fromCardinality: one
+	fromColumn: 'Brickset URL Lookup'.'Brickset URL ID'
+	toColumn: lego_sets.'Brickset URL ID'
+

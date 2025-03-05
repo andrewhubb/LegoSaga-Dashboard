@@ -1,0 +1,449 @@
+table '_05 - Dynamic Title & SubTitle Measures'
+	lineageTag: ca7f449c-29c0-4aa1-bfc6-e7d08debef9a
+
+	measure 'Category Max SubThemes' =
+			
+			TOPN(
+			    1,
+			    VALUES('Category Lookup'[category]),
+			    [Total Subthemes],DESC
+			)
+		lineageTag: c420e0b0-e150-47c3-95a4-f3cdae40d049
+
+	measure 'Category Max Theme Groups' =
+			
+			TOPN(
+			    1,
+			    VALUES('Category Lookup'[category]),
+			    [Total Theme Groups],DESC
+			)
+		lineageTag: ea5d683a-3578-4335-8eb8-f5b2414ca574
+
+	measure 'Current # SubThemes' = ```
+			
+			VAR SubthemesYear = 
+			    MAX(
+			        lego_sets[year]
+			    )
+			RETURN
+			CALCULATE(
+			    [Total Subthemes],
+			    lego_sets[year] = SubthemesYear
+			)
+			```
+		formatString: 0
+		lineageTag: 80b6753d-fec3-4019-a0bb-5b3714a8f52e
+
+	measure 'Current # Theme Groups' = ```
+			
+			VAR ThemeGroupsYear = 
+			    MAX(
+			        'lego_sets'[year]
+			    )
+			RETURN
+			CALCULATE(
+			    [Total Theme Groups],
+			    lego_sets[year] = ThemeGroupsYear
+			)
+			```
+		lineageTag: 98752e7b-5aec-4096-b891-8da5798661b5
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Max # Category SubThemes' =
+			
+			VAR CategoryName = [Category Max SubThemes]
+			RETURN
+			    CALCULATE(
+			        [Total Subthemes],
+			        'Category Lookup'[category] = CategoryName
+			    )
+		formatString: 0
+		lineageTag: 08897605-afac-426b-ae6a-10ee61326c91
+
+	measure 'Max # Category Theme Groups' =
+			
+			VAR CategoryName = [Category Max Theme Groups]
+			RETURN
+			    CALCULATE(
+			        [Total Theme Groups],
+			        'Category Lookup'[category] = CategoryName
+			    )
+		formatString: 0
+		lineageTag: 42446298-1664-420e-95c3-c6d37dbdf7b7
+
+	measure 'Category Max MiniFigs' =
+			
+			TOPN(
+			    1,
+			    VALUES('Category Lookup'[category]),
+			    [Total Minifigs],DESC
+			)
+		lineageTag: 9dfeb543-f45d-4cda-83ca-38c24b97ee5b
+
+	measure 'Max # Category MiniFigs' = ```
+			
+			VAR CategoryName = [Category Max MiniFigs]
+			VAR CatMiniFigs = 
+			    CALCULATE(
+			        [Total Minifigs],
+			        'Category Lookup'[category] = CategoryName
+			    )
+			RETURN
+			SWITCH(
+			            TRUE(),
+			            CatMiniFigs >= 1000000, "about " & FORMAT(CatMiniFigs / 1000000,"#,##0.0M"), 
+			            CatMiniFigs >= 1000, "about " & FORMAT(CatMinifigs / 1000,"#,##0.0K"), 
+			            "with " & FORMAT(CatMiniFigs,"#,##0")    
+			        )
+			```
+		lineageTag: 2b1ee8e2-e7c2-4ee7-9af2-9cf2260c1bb0
+
+	measure 'Category Max Retail Price' =
+			
+			TOPN(
+			    1,
+			    VALUES('Category Lookup'[category]),
+			    [Avg Retail Price],DESC
+			)
+		lineageTag: ad01949e-3179-4573-9700-e8d91573df39
+
+	measure 'Max Category Retail Price' =
+			
+			VAR CategoryName = [Category Max Retail Price]
+			RETURN
+			    CALCULATE(
+			        [Avg Retail Price],
+			        'Category Lookup'[category] = CategoryName
+			    )
+		formatString: \$#,0;(\$#,0);\$#,0
+		lineageTag: ecb90fe7-3a80-4f3a-a045-5c6614db7e9b
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	measure 'Category Max Pieces' =
+			
+			TOPN(
+			    1,
+			    VALUES('Category Lookup'[category]),
+			    [Total Pieces],DESC
+			)
+		lineageTag: 7e464180-8882-4092-8d5a-dbb7b033d627
+
+	measure 'Max # Category Pieces' = ```
+			
+			VAR CategoryName = [Category Max Pieces]
+			VAR CatPieces = 
+			    CALCULATE(
+			        [Total Pieces],
+			        'Category Lookup'[category] = CategoryName
+			    )
+			RETURN
+			SWITCH(
+			            TRUE(),
+			            CatPieces >= 1000000, "about " & FORMAT(CatPieces / 1000000,"#,##0.0M"), 
+			            CatPieces >= 1000, "about " & FORMAT(CatPieces / 1000,"#,##0.0K"), 
+			            "with " & FORMAT([Category Max Pieces],"#,##0")    
+			        )
+			    
+			```
+		lineageTag: 022275f8-d746-4ae4-ba3c-e084ea6de8e7
+
+	measure 'Category Max Sets' =
+			
+			TOPN(
+			    1,
+			    VALUES('Category Lookup'[category]),
+			    [Total Sets],DESC
+			)
+		lineageTag: 26617ee9-3b7b-47ec-994c-119a5de75b7c
+
+	measure 'Max # Category Sets' = ```
+			
+			VAR CategoryName = [Category Max Sets]
+			VAR CatSets =   
+			  CALCULATE(
+			        [Total Sets],
+			        'Category Lookup'[category] = CategoryName
+			    )
+			RETURN
+			FORMAT(CatSets,"#,##0") 
+			```
+		lineageTag: bbee3995-92be-4a6f-87df-395a69198453
+
+	measure 'Age Group Max Sets' = ```
+			
+			VAR FilteredAgeGroups = 
+			CALCULATETABLE(
+			    VALUES(lego_sets[Age Group]),
+			    lego_sets[Age Group] <> "No Age Group"
+			)
+			RETURN
+			TOPN(
+			    1,
+			    FilteredAgeGroups,
+			    [Total Sets], DESC
+			)
+			```
+		lineageTag: 4d241334-62da-413c-a4c6-5329dc4f11b4
+
+	measure 'Max # Age Group Sets' = ```
+			
+			VAR AgeGroupMaxSets = [Age Group Max Sets]
+			RETURN
+			CALCULATE(
+			    [Total Sets],
+			    lego_sets[Age Group] = AgeGroupMaxSets
+			)
+			
+			```
+		formatString: #,0
+		lineageTag: a14666c7-cc16-458f-a00d-63453e674dc8
+
+	measure 'Age Group Max Retail Price' = ```
+			
+			VAR FilteredAgeGroups = 
+			CALCULATETABLE(
+			    VALUES(lego_sets[Age Group]),
+			    lego_sets[Age Group] <> "No Age Group"
+			)
+			RETURN
+			TOPN(
+			    1,
+			    FilteredAgeGroups,
+			    [Avg Retail Price], DESC
+			)
+			```
+		lineageTag: aa4af21d-b2cc-4a66-87ce-35ef903688ca
+
+	measure 'Max Age Group Retail Price' =
+			
+			VAR AgeGroup = [Category Max Retail Price]
+			RETURN
+			    CALCULATE(
+			        [Avg Retail Price],
+			        lego_sets[Age Group] = AgeGroup
+			    )
+		formatString: \$#,0.###############;(\$#,0.###############);\$#,0.###############
+		lineageTag: a28eba57-9ce6-49dd-b1eb-7f18becd5919
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	measure 'Age Group Max MiniFigs' = ```
+			
+			VAR FilteredAgeGroups = 
+			CALCULATETABLE(
+			    VALUES(lego_sets[Age Group]),
+			    lego_sets[Age Group] <> "No Age Group"
+			)
+			RETURN
+			TOPN(
+			    1,
+			    FilteredAgeGroups,
+			    [Total Minifigs],DESC
+			)
+			```
+		lineageTag: c1827274-f5b4-415a-ba27-eb05a12b9db4
+
+	measure 'Max # Age Group MiniFigs' = ```
+			
+			VAR AgeGroupName = [Age Group Max MiniFigs]
+			RETURN
+			    CALCULATE(
+			        [Total Minifigs],
+			        lego_sets[Age Group] = AgeGroupName
+			    )
+			
+			```
+		formatString: 0
+		lineageTag: c10e5e44-dec8-4bef-b48e-ef21895cec0f
+
+	measure 'Age Group Max Pieces' = ```
+			
+			VAR FilteredAgeGroups = 
+			CALCULATETABLE(
+			    VALUES(lego_sets[Age Group]),
+			    lego_sets[Age Group] <> "No Age Group"
+			)
+			RETURN
+			TOPN(
+			    1,
+			    FilteredAgeGroups,
+			    [Total Pieces],DESC
+			)
+			```
+		lineageTag: 3cd642c4-d8fb-4480-bf95-71149e922cd8
+
+	measure 'Max # Age Group Pieces' = ```
+			
+			VAR AgeGroupName = [Age Group Max Pieces]
+			RETURN
+			    CALCULATE(
+			        [Total Pieces],
+			        lego_sets[Age Group] = AgeGroupName
+			    )
+			
+			```
+		formatString: 0
+		lineageTag: 33ce5ee7-ecd3-449d-973d-99f077334276
+
+	measure 'Age Group Max SubThemes' = ```
+			
+			VAR FilteredAgeGroups = 
+			CALCULATETABLE(
+			    VALUES(lego_sets[Age Group]),
+			    lego_sets[Age Group] <> "No Age Group"
+			)
+			RETURN 
+			TOPN(
+			    1,
+			    FilteredAgeGroups,
+			    [Total Subthemes],DESC
+			)
+			```
+		lineageTag: e5bf4dfd-890a-4114-956c-bf33e7ac963e
+
+	measure 'Max # Age Group SubThemes' = ```
+			
+			VAR AgeGroupName = [Age Group Max SubThemes]
+			RETURN
+			    CALCULATE(
+			        [Total Subthemes],
+			        lego_sets[Age Group] = AgeGroupName
+			    )
+			
+			```
+		formatString: 0
+		lineageTag: 498be02e-709a-4cab-945f-c0eef8a4bd6b
+
+	measure 'Age Group Max Theme Groups' = ```
+			
+			VAR FilteredAgeGroups = 
+			CALCULATETABLE(
+			    VALUES(lego_sets[Age Group]),
+			    lego_sets[Age Group] <> "No Age Group"
+			)
+			RETURN
+			TOPN(
+			    1,
+			    FilteredAgeGroups,
+			    [Total Theme Groups],DESC
+			)
+			```
+		lineageTag: 270af72f-a10a-4565-afcd-e9011be88320
+
+	measure 'Max # Age Group Theme Groups' = ```
+			
+			VAR AgeGroupName = [Age Group Max Theme Groups]
+			RETURN
+			    CALCULATE(
+			        [Total Theme Groups],
+			        lego_sets[Age Group] = AgeGroupName
+			    )
+			
+			```
+		lineageTag: 6e0fdfc3-665d-4abe-a7f6-aa97a7062a25
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Current # MiniFigs' = ```
+			
+			VAR MiniFigsYear = 
+			    MAX(
+			        'lego_sets'[year]
+			    )
+			RETURN
+			CALCULATE(
+			    [Total Minifigs],
+			    lego_sets[year] = MiniFigsYear
+			)
+			```
+		formatString: #,0
+		lineageTag: 658410e6-6d0e-476e-b591-87bdaee12472
+
+	measure '% MiniFig Growth' =
+			
+			VAR Difference = [Current # MiniFigs] - [Min # MiniFigs]
+			RETURN
+			FORMAT(
+			DIVIDE(
+			    Difference,
+			    [Min # MiniFigs]
+			),
+			"#,##0%")
+		lineageTag: 3d31ac8c-c4c8-4ba1-820a-6e0749e276c7
+
+	measure 'Category Max Themes' =
+			
+			TOPN(
+			    1,
+			    VALUES('Category Lookup'[category]),
+			    [Total Themes],DESC
+			)
+		lineageTag: bc26dc8d-25aa-4cff-b9e4-b251c738627b
+
+	measure 'Max # Category Themes' =
+			
+			VAR CategoryName = [Category Max Themes]
+			RETURN
+			    CALCULATE(
+			        [Total Themes],
+			        'Category Lookup'[category] = CategoryName
+			    )
+		formatString: 0
+		lineageTag: 9a3127e9-3a26-4654-86b0-890c31b6e124
+
+	measure 'Age Group Max Themes' = ```
+			
+			VAR FilteredAgeGroups = 
+			CALCULATETABLE(
+			    VALUES(lego_sets[Age Group]),
+			    lego_sets[Age Group] <> "No Age Group"
+			)
+			RETURN
+			TOPN(
+			    1,
+			    FilteredAgeGroups,
+			    [Total Themes],DESC
+			)
+			```
+		lineageTag: 7743908e-f47c-492e-850e-6a2af9f46b8d
+
+	measure 'Current # Categories' = ```
+			
+			VAR CategoryYear = 
+			    MAX(
+			        lego_sets[year]
+			    )
+			RETURN
+			CALCULATE(
+			    [Total Categories],
+			    lego_sets[year] = CategoryYear
+			)
+			```
+		lineageTag: 9608677e-a000-4af5-9f78-8f8ed1d4cf9e
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Column1
+		dataType: string
+		isHidden
+		lineageTag: 24aff492-b5f1-4b40-95e9-4216b0e2bbfc
+		summarizeBy: none
+		sourceColumn: Column1
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	partition '_05 - Dynamic Title & SubTitle Measures' = m
+		mode: import
+		source =
+				let
+				    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i44FAA==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Column1 = _t]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"Column1", type text}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,193 @@
+table '_01 - Core Measures'
+	lineageTag: 1884a66d-061a-4899-adc4-8db39efafc27
+
+	measure 'Avg Normal Pieces' =
+			
+			-- Here we are using AVERAGEX To pass a filtered Table, This method can be used with Any X function.
+			
+			AVERAGEX(
+			    FILTER(
+			        KEEPFILTERS(lego_sets),
+			        lego_sets[Category ID] = 1
+			    ),
+			    lego_sets[pieces]
+			)
+		formatString: 0
+		lineageTag: 88171caa-7753-4336-b303-ee302692ea23
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure 'Avg Retail Price' =
+			
+			AVERAGE(
+			    lego_sets[US_retailPrice]
+			)
+		formatString: \$#,0;(\$#,0);\$#,0
+		lineageTag: b53a11c3-9581-491f-a8d6-c8b30c46e513
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	measure 'Max Minifigs' =
+			
+			MAX(
+			    lego_sets[minifigs]
+			)
+		formatString: 0
+		lineageTag: adb56f89-cc78-4d40-82c7-55c9be24a031
+
+	measure 'Max Retail Price' =
+			
+			MAX(
+			    'lego_sets'[US_retailPrice]
+			)
+		formatString: \$#,0;(\$#,0);\$#,0
+		lineageTag: a22185c4-fd1e-406a-93fb-5ff46bbe65c4
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	measure 'Median Retail Price' =
+			
+			MEDIAN(
+			    lego_sets[US_retailPrice]
+			)
+		formatString: \$#,0;(\$#,0);\$#,0
+		lineageTag: 35f09b5e-59da-4288-8056-820c9fe7c968
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	measure Pieces =
+			
+			SUM(
+			    lego_sets[pieces]
+			)
+		formatString: #,0
+		lineageTag: a5b14112-c4e4-4219-8464-5752f256d85f
+
+	measure 'Selected Metric' =
+			
+			SELECTEDVALUE(
+			    Metrics[Metric]
+			)
+		lineageTag: be6df932-ebae-4541-8a43-c0e3b2164317
+
+	measure 'Selected Rank' = ```
+			
+			VAR SelectedTopN =  [Selected TopN]       
+			RETURN
+			IF(
+			    [Theme Rank] <= SelectedTopN,
+			    1,
+			    0
+			)
+			```
+		formatString: 0
+		lineageTag: d4655d39-b451-4c6a-97b4-fb4213ae216f
+
+	measure 'Selected TopN' =
+			
+			-- Here we use the Option for when a single value is not selected
+			SELECTEDVALUE('Top N Table'[TopN],3)
+		formatString: 0
+		lineageTag: 674f5edd-da4c-414e-a8c1-ba3da9171e6d
+
+	measure 'Total Categories' =
+			
+			COUNTROWS(
+			    'Category Lookup'
+			) + RAND() / 1000
+		formatString: 0
+		lineageTag: 4c0d1f4e-b196-42ed-8860-3b00e20741e7
+
+	measure 'Total Minifigs' =
+			
+			SUM(
+			    lego_sets[minifigs]
+			)
+		formatString: #,0
+		lineageTag: 15820e25-a005-46f1-8cdf-7a0b3ef4ece8
+
+	measure 'Total Pieces' =
+			
+			SUM(lego_sets[pieces])
+		formatString: #,0
+		lineageTag: 8db75bf2-3359-42b8-a3ca-48c5c8796d6a
+
+	measure 'Total Sets' =
+			
+			COUNTROWS(
+			    lego_sets
+			)
+		formatString: #,0
+		lineageTag: 5b00d8f8-e17b-4e5e-a0ca-a597f9a5887c
+
+	measure 'Total Subthemes' =
+			
+			COUNTROWS('SubTheme Lookup')
+		formatString: 0
+		lineageTag: b61a0702-ddc1-421d-8f11-3629813bab14
+
+	measure 'Total Theme Groups' =
+			
+			DISTINCTCOUNT(
+			    lego_sets[ThemeGroup ID]
+			) + RAND() / 1000
+		formatString: 0
+		lineageTag: c60a35e8-243c-4209-a395-8cea3c68fa2e
+
+	measure 'Total Themes' =
+			
+			COUNTROWS(
+			    'Theme Lookup'
+			)
+		formatString: #,0
+		lineageTag: d5e82479-72f4-4edf-9bdf-b98cd09da870
+
+	measure 'Price Per Piece' =
+			
+			DIVIDE(
+			    [Total Cost],
+			    [Total Pieces]
+			)
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		lineageTag: 7a9ca450-0e6f-4d6b-ac55-82bbdd105ad8
+
+	measure 'Total Cost' =
+			
+			SUM(
+			    lego_sets[US_retailPrice]
+			)
+		formatString: \$#,0.###############;(\$#,0.###############);\$#,0.###############
+		lineageTag: d2cc4061-db6f-4228-9ca0-57717495b787
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	measure 'Total Max Pieces' =
+			
+			CALCULATE(
+			    [Total Pieces],
+			    'lego_sets'[pieces] = MAX('lego_sets'[pieces]))
+		formatString: #,0
+		lineageTag: 0358c9d4-1f5d-4595-bbff-e68f2d2e6be2
+
+	column Column1
+		dataType: string
+		isHidden
+		lineageTag: 3c37e557-9eb1-4a47-a398-9586c667cc1d
+		summarizeBy: none
+		sourceColumn: Column1
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	partition '_01 - Core Measures' = m
+		mode: import
+		source =
+				let
+				    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i44FAA==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Column1 = _t]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"Column1", type text}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table
+

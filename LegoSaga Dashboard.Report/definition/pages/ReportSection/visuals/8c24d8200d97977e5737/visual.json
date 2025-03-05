@@ -1,0 +1,1716 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/1.5.0/schema.json",
+  "name": "8c24d8200d97977e5737",
+  "position": {
+    "x": 899.14960629921268,
+    "y": 408.18897637795277,
+    "z": 8000,
+    "height": 256.251968503937,
+    "width": 371.90551181102364,
+    "tabOrder": 8000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "Building Blocks: ",
+                    "textStyle": {
+                      "fontFamily": "DIN",
+                      "fontSize": "16px",
+                      "color": "#e87d37"
+                    }
+                  },
+                  {
+                    "value": {
+                      "propertyIdentifier": {
+                        "objectName": "values",
+                        "propertyName": "expr"
+                      },
+                      "selector": {
+                        "id": "YearsOfSets"
+                      }
+                    },
+                    "textStyle": {
+                      "fontFamily": "DIN",
+                      "fontSize": "16px",
+                      "color": "#e87d37"
+                    }
+                  },
+                  {
+                    "value": " Years of Lego Sets & Mini Figures",
+                    "textStyle": {
+                      "fontFamily": "DIN",
+                      "fontSize": "16px",
+                      "color": "#e87d37"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": ""
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": {
+                      "propertyIdentifier": {
+                        "objectName": "values",
+                        "propertyName": "expr"
+                      },
+                      "selector": {
+                        "id": "YearMaxSets"
+                      }
+                    },
+                    "textStyle": {
+                      "fontFamily": "DIN",
+                      "color": "#e87d37"
+                    }
+                  },
+                  {
+                    "value": " ",
+                    "textStyle": {
+                      "fontFamily": "DIN",
+                      "color": "#e87d37"
+                    }
+                  },
+                  {
+                    "value": "was the year with the most sets released with ",
+                    "textStyle": {
+                      "fontFamily": "DIN",
+                      "color": "#59a4b7"
+                    }
+                  },
+                  {
+                    "value": {
+                      "propertyIdentifier": {
+                        "objectName": "values",
+                        "propertyName": "expr"
+                      },
+                      "selector": {
+                        "id": "MaxSets"
+                      }
+                    },
+                    "textStyle": {
+                      "fontFamily": "DIN",
+                      "color": "#e87d37"
+                    }
+                  },
+                  {
+                    "value": " ",
+                    "textStyle": {
+                      "fontFamily": "DIN",
+                      "color": "#e87d37"
+                    }
+                  },
+                  {
+                    "value": "sets whilst",
+                    "textStyle": {
+                      "fontFamily": "DIN",
+                      "color": "#59a4b7"
+                    }
+                  },
+                  {
+                    "value": " ",
+                    "textStyle": {
+                      "fontFamily": "DIN",
+                      "color": "#e87d37"
+                    }
+                  },
+                  {
+                    "value": {
+                      "propertyIdentifier": {
+                        "objectName": "values",
+                        "propertyName": "expr"
+                      },
+                      "selector": {
+                        "id": "LeastSetsYear"
+                      }
+                    },
+                    "textStyle": {
+                      "fontFamily": "DIN",
+                      "color": "#e87d37"
+                    }
+                  },
+                  {
+                    "value": " ",
+                    "textStyle": {
+                      "fontFamily": "DIN",
+                      "color": "#e87d37"
+                    }
+                  },
+                  {
+                    "value": "had the least sets released with  just ",
+                    "textStyle": {
+                      "fontFamily": "DIN",
+                      "color": "#59a4b7"
+                    }
+                  },
+                  {
+                    "value": {
+                      "propertyIdentifier": {
+                        "objectName": "values",
+                        "propertyName": "expr"
+                      },
+                      "selector": {
+                        "id": "MinSetsReleased"
+                      }
+                    },
+                    "textStyle": {
+                      "fontFamily": "DIN",
+                      "color": "#e87d37"
+                    }
+                  },
+                  {
+                    "value": " sets. This is a growth of",
+                    "textStyle": {
+                      "fontFamily": "DIN",
+                      "color": "#59a4b7"
+                    }
+                  },
+                  {
+                    "value": " ",
+                    "textStyle": {
+                      "fontFamily": "DIN",
+                      "color": "#e87d37"
+                    }
+                  },
+                  {
+                    "value": {
+                      "propertyIdentifier": {
+                        "objectName": "values",
+                        "propertyName": "expr"
+                      },
+                      "selector": {
+                        "id": "SetGrowth%"
+                      }
+                    },
+                    "textStyle": {
+                      "fontFamily": "DIN",
+                      "color": "#e87d37"
+                    }
+                  }
+                ],
+                "listType": "bullet"
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "The",
+                    "textStyle": {
+                      "fontFamily": "DIN",
+                      "color": "#59a4b7"
+                    }
+                  },
+                  {
+                    "value": " ",
+                    "textStyle": {
+                      "fontFamily": "DIN",
+                      "color": "#e87d37"
+                    }
+                  },
+                  {
+                    "value": {
+                      "propertyIdentifier": {
+                        "objectName": "values",
+                        "propertyName": "expr"
+                      },
+                      "selector": {
+                        "id": "SetMaxPieces"
+                      }
+                    },
+                    "textStyle": {
+                      "fontFamily": "DIN",
+                      "color": "#e87d37"
+                    }
+                  },
+                  {
+                    "value": " ",
+                    "textStyle": {
+                      "fontFamily": "DIN",
+                      "color": "#e87d37"
+                    }
+                  },
+                  {
+                    "value": "is the set with the most pieces comprising",
+                    "textStyle": {
+                      "fontFamily": "DIN",
+                      "color": "#59a4b7"
+                    }
+                  },
+                  {
+                    "value": " ",
+                    "textStyle": {
+                      "fontFamily": "DIN",
+                      "color": "#76dbf4"
+                    }
+                  },
+                  {
+                    "value": {
+                      "propertyIdentifier": {
+                        "objectName": "values",
+                        "propertyName": "expr"
+                      },
+                      "selector": {
+                        "id": "MaxPieces"
+                      }
+                    },
+                    "textStyle": {
+                      "fontFamily": "DIN",
+                      "color": "#e87d37"
+                    }
+                  },
+                  {
+                    "value": " ",
+                    "textStyle": {
+                      "fontFamily": "DIN",
+                      "color": "#e87d37"
+                    }
+                  },
+                  {
+                    "value": "pieces.",
+                    "textStyle": {
+                      "fontFamily": "DIN",
+                      "color": "#59a4b7"
+                    }
+                  }
+                ],
+                "listType": "bullet"
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "The",
+                    "textStyle": {
+                      "fontFamily": "DIN",
+                      "color": "#59a4b7"
+                    }
+                  },
+                  {
+                    "value": " ",
+                    "textStyle": {
+                      "fontFamily": "DIN",
+                      "color": "#76dbf4"
+                    }
+                  },
+                  {
+                    "value": {
+                      "propertyIdentifier": {
+                        "objectName": "values",
+                        "propertyName": "expr"
+                      },
+                      "selector": {
+                        "id": "ExpensiveSet1Name"
+                      }
+                    },
+                    "textStyle": {
+                      "fontFamily": "DIN",
+                      "color": "#e87d37"
+                    }
+                  },
+                  {
+                    "value": " ",
+                    "textStyle": {
+                      "fontFamily": "DIN",
+                      "color": "#e87d37"
+                    }
+                  },
+                  {
+                    "value": "set with",
+                    "textStyle": {
+                      "fontFamily": "DIN",
+                      "color": "#59a4b7"
+                    }
+                  },
+                  {
+                    "value": " ",
+                    "textStyle": {
+                      "fontFamily": "DIN",
+                      "color": "#76dbf4"
+                    }
+                  },
+                  {
+                    "value": {
+                      "propertyIdentifier": {
+                        "objectName": "values",
+                        "propertyName": "expr"
+                      },
+                      "selector": {
+                        "id": "ExpensiveSet1Pieces"
+                      }
+                    },
+                    "textStyle": {
+                      "fontFamily": "DIN",
+                      "color": "#e87d37"
+                    }
+                  },
+                  {
+                    "value": " ",
+                    "textStyle": {
+                      "fontFamily": "DIN",
+                      "color": "#e87d37"
+                    }
+                  },
+                  {
+                    "value": "pieces and the",
+                    "textStyle": {
+                      "fontFamily": "DIN",
+                      "color": "#59a4b7"
+                    }
+                  },
+                  {
+                    "value": " ",
+                    "textStyle": {
+                      "fontFamily": "DIN",
+                      "color": "#76dbf4"
+                    }
+                  },
+                  {
+                    "value": {
+                      "propertyIdentifier": {
+                        "objectName": "values",
+                        "propertyName": "expr"
+                      },
+                      "selector": {
+                        "id": "ExpensiveSet2Name"
+                      }
+                    },
+                    "textStyle": {
+                      "fontFamily": "DIN",
+                      "color": "#e87d37"
+                    }
+                  },
+                  {
+                    "value": " ",
+                    "textStyle": {
+                      "fontFamily": "DIN",
+                      "color": "#76dbf4"
+                    }
+                  },
+                  {
+                    "value": "set with ",
+                    "textStyle": {
+                      "fontFamily": "DIN",
+                      "color": "#59a4b7"
+                    }
+                  },
+                  {
+                    "value": {
+                      "propertyIdentifier": {
+                        "objectName": "values",
+                        "propertyName": "expr"
+                      },
+                      "selector": {
+                        "id": "ExpensiveSet2Pieces"
+                      }
+                    },
+                    "textStyle": {
+                      "fontFamily": "DIN",
+                      "color": "#e87d37"
+                    }
+                  },
+                  {
+                    "value": " pieces are the most expensive sets with a retail price of ",
+                    "textStyle": {
+                      "fontFamily": "DIN",
+                      "color": "#59a4b7"
+                    }
+                  },
+                  {
+                    "value": " ",
+                    "textStyle": {
+                      "fontFamily": "DIN",
+                      "color": "#76dbf4"
+                    }
+                  },
+                  {
+                    "value": {
+                      "propertyIdentifier": {
+                        "objectName": "values",
+                        "propertyName": "expr"
+                      },
+                      "selector": {
+                        "id": "MaxRetailPrice"
+                      }
+                    },
+                    "textStyle": {
+                      "fontFamily": "DIN",
+                      "color": "#e87d37"
+                    }
+                  },
+                  {
+                    "value": ".",
+                    "textStyle": {
+                      "fontFamily": "DIN",
+                      "color": "#e87d37"
+                    }
+                  }
+                ],
+                "listType": "bullet"
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Lego first released Mini Figures in",
+                    "textStyle": {
+                      "fontFamily": "DIN",
+                      "color": "#59a4b7"
+                    }
+                  },
+                  {
+                    "value": " ",
+                    "textStyle": {
+                      "fontFamily": "DIN",
+                      "color": "#76dbf4"
+                    }
+                  },
+                  {
+                    "value": {
+                      "propertyIdentifier": {
+                        "objectName": "values",
+                        "propertyName": "expr"
+                      },
+                      "selector": {
+                        "id": "MinifigsReleased"
+                      }
+                    },
+                    "textStyle": {
+                      "fontFamily": "DIN",
+                      "color": "#e87d37"
+                    }
+                  },
+                  {
+                    "value": " ",
+                    "textStyle": {
+                      "fontFamily": "DIN",
+                      "color": "#e87d37"
+                    }
+                  },
+                  {
+                    "value": "with",
+                    "textStyle": {
+                      "fontFamily": "DIN",
+                      "color": "#59a4b7"
+                    }
+                  },
+                  {
+                    "value": " ",
+                    "textStyle": {
+                      "fontFamily": "DIN",
+                      "color": "#76dbf4"
+                    }
+                  },
+                  {
+                    "value": {
+                      "propertyIdentifier": {
+                        "objectName": "values",
+                        "propertyName": "expr"
+                      },
+                      "selector": {
+                        "id": "MinMinifigs"
+                      }
+                    },
+                    "textStyle": {
+                      "fontFamily": "DIN",
+                      "color": "#e87d37"
+                    }
+                  },
+                  {
+                    "value": " ",
+                    "textStyle": {
+                      "fontFamily": "DIN",
+                      "color": "#76dbf4"
+                    }
+                  },
+                  {
+                    "value": "Mini figures, the current number of Mini Figures is",
+                    "textStyle": {
+                      "fontFamily": "DIN",
+                      "color": "#59a4b7"
+                    }
+                  },
+                  {
+                    "value": " ",
+                    "textStyle": {
+                      "fontFamily": "DIN",
+                      "color": "#76dbf4"
+                    }
+                  },
+                  {
+                    "value": {
+                      "propertyIdentifier": {
+                        "objectName": "values",
+                        "propertyName": "expr"
+                      },
+                      "selector": {
+                        "id": "CurrentMiniFigs"
+                      }
+                    },
+                    "textStyle": {
+                      "fontFamily": "DIN",
+                      "color": "#e87d37"
+                    }
+                  },
+                  {
+                    "value": " ",
+                    "textStyle": {
+                      "fontFamily": "DIN",
+                      "color": "#e87d37"
+                    }
+                  },
+                  {
+                    "value": "an increase of",
+                    "textStyle": {
+                      "fontFamily": "DIN",
+                      "color": "#59a4b7"
+                    }
+                  },
+                  {
+                    "value": " ",
+                    "textStyle": {
+                      "fontFamily": "DIN",
+                      "color": "#76dbf4"
+                    }
+                  },
+                  {
+                    "value": {
+                      "propertyIdentifier": {
+                        "objectName": "values",
+                        "propertyName": "expr"
+                      },
+                      "selector": {
+                        "id": "MinifigGrowth"
+                      }
+                    },
+                    "textStyle": {
+                      "fontFamily": "DIN",
+                      "color": "#e87d37"
+                    }
+                  }
+                ],
+                "listType": "bullet"
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": ""
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": ""
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ],
+      "values": [
+        {
+          "properties": {
+            "expr": {
+              "expr": {
+                "Min": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "Subquery": {
+                          "Query": {
+                            "Version": 2,
+                            "From": [
+                              {
+                                "Name": "_",
+                                "Entity": "_04 - Summary Text",
+                                "Type": 0
+                              }
+                            ],
+                            "Select": [
+                              {
+                                "Measure": {
+                                  "Expression": {
+                                    "SourceRef": {
+                                      "Source": "_"
+                                    }
+                                  },
+                                  "Property": "Years of Sets"
+                                },
+                                "Name": "_04 - Summary Text.Years of Sets"
+                              }
+                            ]
+                          }
+                        }
+                      },
+                      "Property": "_04 - Summary Text.Years of Sets"
+                    }
+                  },
+                  "IncludeAllTypes": 1
+                },
+                "Annotations": {
+                  "NaturalLanguage": {
+                    "version": 1,
+                    "kind": "NaturalLanguage",
+                    "annotation": {
+                      "name": "YearsOfSets",
+                      "utterance": "Years of Sets"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "id": "YearsOfSets"
+          }
+        },
+        {
+          "properties": {
+            "expr": {
+              "expr": {
+                "Min": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "Subquery": {
+                          "Query": {
+                            "Version": 2,
+                            "From": [
+                              {
+                                "Name": "_",
+                                "Entity": "_04 - Summary Text",
+                                "Type": 0
+                              }
+                            ],
+                            "Select": [
+                              {
+                                "Measure": {
+                                  "Expression": {
+                                    "SourceRef": {
+                                      "Source": "_"
+                                    }
+                                  },
+                                  "Property": "Max Sets Year"
+                                },
+                                "Name": "_04 - Summary Text.Year With Most Sets Released"
+                              }
+                            ]
+                          }
+                        }
+                      },
+                      "Property": "_04 - Summary Text.Year With Most Sets Released"
+                    }
+                  },
+                  "IncludeAllTypes": 1
+                },
+                "Annotations": {
+                  "NaturalLanguage": {
+                    "version": 1,
+                    "kind": "NaturalLanguage",
+                    "annotation": {
+                      "name": "YearMaxSets",
+                      "utterance": "year with most sets released"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "id": "YearMaxSets"
+          }
+        },
+        {
+          "properties": {
+            "expr": {
+              "expr": {
+                "Min": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "Subquery": {
+                          "Query": {
+                            "Version": 2,
+                            "From": [
+                              {
+                                "Name": "_",
+                                "Entity": "_04 - Summary Text",
+                                "Type": 0
+                              }
+                            ],
+                            "Select": [
+                              {
+                                "Measure": {
+                                  "Expression": {
+                                    "SourceRef": {
+                                      "Source": "_"
+                                    }
+                                  },
+                                  "Property": "Max # Sets"
+                                },
+                                "Name": "_04 - Summary Text.Maximum Number of Sets Released"
+                              }
+                            ]
+                          }
+                        }
+                      },
+                      "Property": "_04 - Summary Text.Maximum Number of Sets Released"
+                    }
+                  },
+                  "IncludeAllTypes": 1
+                },
+                "Annotations": {
+                  "NaturalLanguage": {
+                    "version": 1,
+                    "kind": "NaturalLanguage",
+                    "annotation": {
+                      "name": "MaxSets",
+                      "utterance": "maximum number of sets released"
+                    }
+                  }
+                }
+              }
+            },
+            "formatString": {
+              "expr": {
+                "Literal": {
+                  "Value": "'#,0'"
+                }
+              }
+            }
+          },
+          "selector": {
+            "id": "MaxSets"
+          }
+        },
+        {
+          "properties": {
+            "expr": {
+              "expr": {
+                "Min": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "Subquery": {
+                          "Query": {
+                            "Version": 2,
+                            "From": [
+                              {
+                                "Name": "_",
+                                "Entity": "_04 - Summary Text",
+                                "Type": 0
+                              }
+                            ],
+                            "Select": [
+                              {
+                                "Measure": {
+                                  "Expression": {
+                                    "SourceRef": {
+                                      "Source": "_"
+                                    }
+                                  },
+                                  "Property": "Min Sets Year"
+                                },
+                                "Name": "_04 - Summary Text.Year With Least Sets Released"
+                              }
+                            ]
+                          }
+                        }
+                      },
+                      "Property": "_04 - Summary Text.Year With Least Sets Released"
+                    }
+                  },
+                  "IncludeAllTypes": 1
+                },
+                "Annotations": {
+                  "NaturalLanguage": {
+                    "version": 1,
+                    "kind": "NaturalLanguage",
+                    "annotation": {
+                      "name": "LeastSetsYear",
+                      "utterance": "year with least sets released"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "id": "LeastSetsYear"
+          }
+        },
+        {
+          "properties": {
+            "expr": {
+              "expr": {
+                "Min": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "Subquery": {
+                          "Query": {
+                            "Version": 2,
+                            "From": [
+                              {
+                                "Name": "_",
+                                "Entity": "_04 - Summary Text",
+                                "Type": 0
+                              }
+                            ],
+                            "Select": [
+                              {
+                                "Measure": {
+                                  "Expression": {
+                                    "SourceRef": {
+                                      "Source": "_"
+                                    }
+                                  },
+                                  "Property": "Min # Sets"
+                                },
+                                "Name": "_04 - Summary Text.Minimum Number of Sets Released"
+                              }
+                            ]
+                          }
+                        }
+                      },
+                      "Property": "_04 - Summary Text.Minimum Number of Sets Released"
+                    }
+                  },
+                  "IncludeAllTypes": 1
+                },
+                "Annotations": {
+                  "NaturalLanguage": {
+                    "version": 1,
+                    "kind": "NaturalLanguage",
+                    "annotation": {
+                      "name": "MinSetsReleased",
+                      "utterance": "minimum number of sets released"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "id": "MinSetsReleased"
+          }
+        },
+        {
+          "properties": {
+            "expr": {
+              "expr": {
+                "Min": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "Subquery": {
+                          "Query": {
+                            "Version": 2,
+                            "From": [
+                              {
+                                "Name": "_",
+                                "Entity": "_04 - Summary Text",
+                                "Type": 0
+                              }
+                            ],
+                            "Select": [
+                              {
+                                "Measure": {
+                                  "Expression": {
+                                    "SourceRef": {
+                                      "Source": "_"
+                                    }
+                                  },
+                                  "Property": "Max Pieces Set"
+                                },
+                                "Name": "_04 - Summary Text.Set With Most Pieces"
+                              }
+                            ]
+                          }
+                        }
+                      },
+                      "Property": "_04 - Summary Text.Set With Most Pieces"
+                    }
+                  },
+                  "IncludeAllTypes": 1
+                },
+                "Annotations": {
+                  "NaturalLanguage": {
+                    "version": 1,
+                    "kind": "NaturalLanguage",
+                    "annotation": {
+                      "name": "SetMaxPieces",
+                      "utterance": "set with most pieces"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "id": "SetMaxPieces"
+          }
+        },
+        {
+          "properties": {
+            "expr": {
+              "expr": {
+                "Min": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "Subquery": {
+                          "Query": {
+                            "Version": 2,
+                            "From": [
+                              {
+                                "Name": "_",
+                                "Entity": "_04 - Summary Text",
+                                "Type": 0
+                              }
+                            ],
+                            "Select": [
+                              {
+                                "Measure": {
+                                  "Expression": {
+                                    "SourceRef": {
+                                      "Source": "_"
+                                    }
+                                  },
+                                  "Property": "Max Pieces"
+                                },
+                                "Name": "_04 - Summary Text.Max Pieces"
+                              }
+                            ]
+                          }
+                        }
+                      },
+                      "Property": "_04 - Summary Text.Max Pieces"
+                    }
+                  },
+                  "IncludeAllTypes": 1
+                },
+                "Annotations": {
+                  "NaturalLanguage": {
+                    "version": 1,
+                    "kind": "NaturalLanguage",
+                    "annotation": {
+                      "name": "MaxPieces",
+                      "utterance": "max pieces"
+                    }
+                  }
+                }
+              }
+            },
+            "formatString": {
+              "expr": {
+                "Literal": {
+                  "Value": "'#,0'"
+                }
+              }
+            }
+          },
+          "selector": {
+            "id": "MaxPieces"
+          }
+        },
+        {
+          "properties": {
+            "expr": {
+              "expr": {
+                "Min": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "Subquery": {
+                          "Query": {
+                            "Version": 2,
+                            "From": [
+                              {
+                                "Name": "_",
+                                "Entity": "_04 - Summary Text",
+                                "Type": 0
+                              }
+                            ],
+                            "Select": [
+                              {
+                                "Measure": {
+                                  "Expression": {
+                                    "SourceRef": {
+                                      "Source": "_"
+                                    }
+                                  },
+                                  "Property": "Expensive Set 1 Name"
+                                },
+                                "Name": "_04 - Summary Text.Expensive Set 1 Name"
+                              }
+                            ]
+                          }
+                        }
+                      },
+                      "Property": "_04 - Summary Text.Expensive Set 1 Name"
+                    }
+                  },
+                  "IncludeAllTypes": 1
+                },
+                "Annotations": {
+                  "NaturalLanguage": {
+                    "version": 1,
+                    "kind": "NaturalLanguage",
+                    "annotation": {
+                      "name": "ExpensiveSet1Name",
+                      "utterance": "expensive set 1 name"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "id": "ExpensiveSet1Name"
+          }
+        },
+        {
+          "properties": {
+            "expr": {
+              "expr": {
+                "Min": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "Subquery": {
+                          "Query": {
+                            "Version": 2,
+                            "From": [
+                              {
+                                "Name": "_",
+                                "Entity": "_04 - Summary Text",
+                                "Type": 0
+                              }
+                            ],
+                            "Select": [
+                              {
+                                "Measure": {
+                                  "Expression": {
+                                    "SourceRef": {
+                                      "Source": "_"
+                                    }
+                                  },
+                                  "Property": "Expensive Set 1 Pieces"
+                                },
+                                "Name": "_04 - Summary Text.Expensive Set 1 Pieces"
+                              }
+                            ]
+                          }
+                        }
+                      },
+                      "Property": "_04 - Summary Text.Expensive Set 1 Pieces"
+                    }
+                  },
+                  "IncludeAllTypes": 1
+                },
+                "Annotations": {
+                  "NaturalLanguage": {
+                    "version": 1,
+                    "kind": "NaturalLanguage",
+                    "annotation": {
+                      "name": "ExpensiveSet1Pieces",
+                      "utterance": "expensive set 1 pieces"
+                    }
+                  }
+                }
+              }
+            },
+            "formatString": {
+              "expr": {
+                "Literal": {
+                  "Value": "'#,0'"
+                }
+              }
+            }
+          },
+          "selector": {
+            "id": "ExpensiveSet1Pieces"
+          }
+        },
+        {
+          "properties": {
+            "expr": {
+              "expr": {
+                "Min": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "Subquery": {
+                          "Query": {
+                            "Version": 2,
+                            "From": [
+                              {
+                                "Name": "_",
+                                "Entity": "_04 - Summary Text",
+                                "Type": 0
+                              }
+                            ],
+                            "Select": [
+                              {
+                                "Measure": {
+                                  "Expression": {
+                                    "SourceRef": {
+                                      "Source": "_"
+                                    }
+                                  },
+                                  "Property": "Expensive Set 2 Name"
+                                },
+                                "Name": "_04 - Summary Text.Expensive Set 2 Name"
+                              }
+                            ]
+                          }
+                        }
+                      },
+                      "Property": "_04 - Summary Text.Expensive Set 2 Name"
+                    }
+                  },
+                  "IncludeAllTypes": 1
+                },
+                "Annotations": {
+                  "NaturalLanguage": {
+                    "version": 1,
+                    "kind": "NaturalLanguage",
+                    "annotation": {
+                      "name": "ExpensiveSet2Name",
+                      "utterance": "expensive set 2 name"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "id": "ExpensiveSet2Name"
+          }
+        },
+        {
+          "properties": {
+            "expr": {
+              "expr": {
+                "Min": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "Subquery": {
+                          "Query": {
+                            "Version": 2,
+                            "From": [
+                              {
+                                "Name": "_",
+                                "Entity": "_04 - Summary Text",
+                                "Type": 0
+                              }
+                            ],
+                            "Select": [
+                              {
+                                "Measure": {
+                                  "Expression": {
+                                    "SourceRef": {
+                                      "Source": "_"
+                                    }
+                                  },
+                                  "Property": "Expensive Set 2 Pieces"
+                                },
+                                "Name": "_04 - Summary Text.Expensive Set 2 Pieces"
+                              }
+                            ]
+                          }
+                        }
+                      },
+                      "Property": "_04 - Summary Text.Expensive Set 2 Pieces"
+                    }
+                  },
+                  "IncludeAllTypes": 1
+                },
+                "Annotations": {
+                  "NaturalLanguage": {
+                    "version": 1,
+                    "kind": "NaturalLanguage",
+                    "annotation": {
+                      "name": "ExpensiveSet2Pieces",
+                      "utterance": "expensive set 2 pieces"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "id": "ExpensiveSet2Pieces"
+          }
+        },
+        {
+          "properties": {
+            "expr": {
+              "expr": {
+                "Min": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "Subquery": {
+                          "Query": {
+                            "Version": 2,
+                            "From": [
+                              {
+                                "Name": "l",
+                                "Entity": "lego_sets",
+                                "Type": 0
+                              }
+                            ],
+                            "Select": [
+                              {
+                                "Aggregation": {
+                                  "Expression": {
+                                    "Column": {
+                                      "Expression": {
+                                        "SourceRef": {
+                                          "Source": "l"
+                                        }
+                                      },
+                                      "Property": "US_retailPrice"
+                                    }
+                                  },
+                                  "Function": 4
+                                },
+                                "Name": "Max(lego_sets.US_retailPrice)"
+                              }
+                            ]
+                          }
+                        }
+                      },
+                      "Property": "Max(lego_sets.US_retailPrice)"
+                    }
+                  },
+                  "IncludeAllTypes": 1
+                },
+                "Annotations": {
+                  "NaturalLanguage": {
+                    "version": 1,
+                    "kind": "NaturalLanguage",
+                    "annotation": {
+                      "name": "MaxRetailPrice",
+                      "utterance": "maximum US retail price"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "id": "MaxRetailPrice"
+          }
+        },
+        {
+          "properties": {
+            "expr": {
+              "expr": {
+                "Min": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "Subquery": {
+                          "Query": {
+                            "Version": 2,
+                            "From": [
+                              {
+                                "Name": "_",
+                                "Entity": "_04 - Summary Text",
+                                "Type": 0
+                              }
+                            ],
+                            "Select": [
+                              {
+                                "Measure": {
+                                  "Expression": {
+                                    "SourceRef": {
+                                      "Source": "_"
+                                    }
+                                  },
+                                  "Property": "1st Minifigs Year"
+                                },
+                                "Name": "_04 - Summary Text.Minifigs Released"
+                              }
+                            ]
+                          }
+                        }
+                      },
+                      "Property": "_04 - Summary Text.Minifigs Released"
+                    }
+                  },
+                  "IncludeAllTypes": 1
+                },
+                "Annotations": {
+                  "NaturalLanguage": {
+                    "version": 1,
+                    "kind": "NaturalLanguage",
+                    "annotation": {
+                      "name": "MinifigsReleased",
+                      "utterance": "minifigs released"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "id": "MinifigsReleased"
+          }
+        },
+        {
+          "properties": {
+            "expr": {
+              "expr": {
+                "Min": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "Subquery": {
+                          "Query": {
+                            "Version": 2,
+                            "From": [
+                              {
+                                "Name": "_",
+                                "Entity": "_04 - Summary Text",
+                                "Type": 0
+                              }
+                            ],
+                            "Select": [
+                              {
+                                "Measure": {
+                                  "Expression": {
+                                    "SourceRef": {
+                                      "Source": "_"
+                                    }
+                                  },
+                                  "Property": "Years of MiniFigs"
+                                },
+                                "Name": "_04 - Summary Text.Years of MiniFigs"
+                              }
+                            ]
+                          }
+                        }
+                      },
+                      "Property": "_04 - Summary Text.Years of MiniFigs"
+                    }
+                  },
+                  "IncludeAllTypes": 1
+                },
+                "Annotations": {
+                  "NaturalLanguage": {
+                    "version": 1,
+                    "kind": "NaturalLanguage",
+                    "annotation": {
+                      "name": "YearsOfMinifigs",
+                      "utterance": "years of MiniFigs"
+                    }
+                  }
+                }
+              }
+            },
+            "formatString": {
+              "expr": {
+                "Literal": {
+                  "Value": "'#,0'"
+                }
+              }
+            }
+          },
+          "selector": {
+            "id": "YearsOfMinifigs"
+          }
+        },
+        {
+          "properties": {
+            "expr": {
+              "expr": {
+                "Min": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "Subquery": {
+                          "Query": {
+                            "Version": 2,
+                            "From": [
+                              {
+                                "Name": "_",
+                                "Entity": "_04 - Summary Text",
+                                "Type": 0
+                              }
+                            ],
+                            "Select": [
+                              {
+                                "Measure": {
+                                  "Expression": {
+                                    "SourceRef": {
+                                      "Source": "_"
+                                    }
+                                  },
+                                  "Property": "% Set Growth"
+                                },
+                                "Name": "_04 - Summary Text.% Set Growth"
+                              }
+                            ]
+                          }
+                        }
+                      },
+                      "Property": "_04 - Summary Text.% Set Growth"
+                    }
+                  },
+                  "IncludeAllTypes": 1
+                },
+                "Annotations": {
+                  "NaturalLanguage": {
+                    "version": 1,
+                    "kind": "NaturalLanguage",
+                    "annotation": {
+                      "name": "SetGrowth%",
+                      "utterance": "% set growth"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "id": "SetGrowth%"
+          }
+        },
+        {
+          "properties": {
+            "expr": {
+              "expr": {
+                "Min": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "Subquery": {
+                          "Query": {
+                            "Version": 2,
+                            "From": [
+                              {
+                                "Name": "_",
+                                "Entity": "_04 - Summary Text",
+                                "Type": 0
+                              }
+                            ],
+                            "Select": [
+                              {
+                                "Measure": {
+                                  "Expression": {
+                                    "SourceRef": {
+                                      "Source": "_"
+                                    }
+                                  },
+                                  "Property": "Min # MiniFigs"
+                                },
+                                "Name": "_04 - Summary Text.Min # MiniFigs"
+                              }
+                            ]
+                          }
+                        }
+                      },
+                      "Property": "_04 - Summary Text.Min # MiniFigs"
+                    }
+                  },
+                  "IncludeAllTypes": 1
+                },
+                "Annotations": {
+                  "NaturalLanguage": {
+                    "version": 1,
+                    "kind": "NaturalLanguage",
+                    "annotation": {
+                      "name": "MinMinifigs",
+                      "utterance": "[Min # MiniFigs]"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "id": "MinMinifigs"
+          }
+        },
+        {
+          "properties": {
+            "expr": {
+              "expr": {
+                "Min": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "Subquery": {
+                          "Query": {
+                            "Version": 2,
+                            "From": [
+                              {
+                                "Name": "_",
+                                "Entity": "_05 - Dynamic Title & SubTitle Measures",
+                                "Type": 0
+                              }
+                            ],
+                            "Select": [
+                              {
+                                "Measure": {
+                                  "Expression": {
+                                    "SourceRef": {
+                                      "Source": "_"
+                                    }
+                                  },
+                                  "Property": "Current # MiniFigs"
+                                },
+                                "Name": "_05 - Dynamic Title & SubTitle Measures.Current # MiniFigs"
+                              }
+                            ]
+                          }
+                        }
+                      },
+                      "Property": "_05 - Dynamic Title & SubTitle Measures.Current # MiniFigs"
+                    }
+                  },
+                  "IncludeAllTypes": 1
+                },
+                "Annotations": {
+                  "NaturalLanguage": {
+                    "version": 1,
+                    "kind": "NaturalLanguage",
+                    "annotation": {
+                      "name": "CurrentMiniFigs",
+                      "utterance": "current # MiniFigs"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "id": "CurrentMiniFigs"
+          }
+        },
+        {
+          "properties": {
+            "expr": {
+              "expr": {
+                "Min": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "Subquery": {
+                          "Query": {
+                            "Version": 2,
+                            "From": [
+                              {
+                                "Name": "_",
+                                "Entity": "_05 - Dynamic Title & SubTitle Measures",
+                                "Type": 0
+                              }
+                            ],
+                            "Select": [
+                              {
+                                "Measure": {
+                                  "Expression": {
+                                    "SourceRef": {
+                                      "Source": "_"
+                                    }
+                                  },
+                                  "Property": "% MiniFig Growth"
+                                },
+                                "Name": "_05 - Dynamic Title & SubTitle Measures.% MiniFig Growth"
+                              }
+                            ]
+                          }
+                        }
+                      },
+                      "Property": "_05 - Dynamic Title & SubTitle Measures.% MiniFig Growth"
+                    }
+                  },
+                  "IncludeAllTypes": 1
+                },
+                "Annotations": {
+                  "NaturalLanguage": {
+                    "version": 1,
+                    "kind": "NaturalLanguage",
+                    "annotation": {
+                      "name": "MinifigGrowth",
+                      "utterance": "% MiniFig growth"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "id": "MinifigGrowth"
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "background": [
+        {
+          "properties": {
+            "color": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#020B18'"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ],
+      "border": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "color": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#4381A9'"
+                    }
+                  }
+                }
+              }
+            },
+            "radius": {
+              "expr": {
+                "Literal": {
+                  "Value": "10D"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

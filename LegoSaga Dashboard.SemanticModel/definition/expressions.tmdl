@@ -1,0 +1,7 @@
+expression 'File Path' = "D:\OneDrive - Insightful Tech Consulting\Data\006 - Maven Analytics\Challenge - Lego Sets\lego_sets.csv" meta [IsParameterQuery=true, Type="Text", IsParameterQueryRequired=true]
+	lineageTag: fe66d6ce-6194-47bc-af80-13d8199e4d8c
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Text
+

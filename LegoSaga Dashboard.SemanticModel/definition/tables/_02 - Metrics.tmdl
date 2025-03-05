@@ -1,0 +1,255 @@
+table '_02 - Metrics'
+	lineageTag: d8b17002-b57a-4449-92f7-ae1e0acc5b26
+
+	measure Metric = ```
+			
+			VAR SelectedMetric = [Selected Metric]
+			RETURN
+			    SWITCH(
+			        TRUE(),
+			        SelectedMetric = "Sets",[Total Sets],
+			        SelectedMetric = "Pieces",[Pieces],            
+			        SelectedMetric = "Avg Retail Price",[Avg Retail Price],
+			        SelectedMetric = "Mini Figures",[Total Minifigs],        
+			        SelectedMetric = "Sub-Themes",[Total Subthemes],
+			        SelectedMetric = "Theme Groups",[Total Theme Groups],   
+			        SelectedMetric = "Themes",[Total Themes],
+			        SelectedMetric = "Categories",[Total Categories],
+			        [Total Sets]
+			    )
+			```
+		lineageTag: 8c39d380-a225-414b-a0a2-fe9cf845244e
+
+		formatStringDefinition =
+				VAR SelectedMetric = if(ISBLANK([Selected Metric]),"# Sets",[Selected Metric])
+				RETURN
+				    SWITCH(
+				        TRUE(),
+				        SelectedMetric = "# Sets",",#",
+				        SelectedMetric = "Avg Pieces",",#",
+				        SelectedMetric = "Avg Retail Price","$#",
+				        ",#"
+				    )
+
+	measure 'ScatterPlot Metric' = ```
+			
+			VAR SelectedMetric = [Selected Metric]
+			RETURN
+			    SWITCH(
+			        TRUE(),        
+			        SelectedMetric = "Pieces",[Max Pieces],      
+			        SelectedMetric = "Mini Figures",[Max Minifigs],        
+			        [Max Pieces]
+			    )
+			```
+		formatString: 0
+		lineageTag: 24505524-cff1-4408-91af-ad3cec329656
+
+	measure 'Theme Metric' = ```
+			
+			VAR SelectedMetric = [Selected Metric]
+			RETURN
+			    SWITCH(
+			        TRUE(),
+			        SelectedMetric = "# Sets",[Total Sets],
+			        SelectedMetric = "Pieces",[Pieces],            
+			        SelectedMetric = "Avg Retail Price",[Avg Retail Price],
+			        SelectedMetric = "Mini Figures",[Total Minifigs],        
+			        SelectedMetric = "Sub-Themes",[Total Subthemes],           
+			        [Total Sets]
+			    )
+			```
+		formatString: #,0
+		lineageTag: ff500436-4ebd-47ce-9a8d-3ebfc0ae5b8a
+
+	measure 'Theme Rank' = ```
+			
+			/* 
+			This returns a value depending on the measure selected from the 
+			Slicer buttons.
+			*/
+			VAR SelectedMetric = [Selected Metric]    
+			RETURN
+			RANKX(
+			    ALL('Theme Lookup'),
+			    SWITCH(
+			        TRUE(),
+			            SelectedMetric = "# Sets", [Total Sets],
+			            SelectedMetric = "Avg Retail Price",[Avg Retail Price],
+			            SelectedMetric = "Mini Figures",[Total Minifigs],
+			            SelectedMetric = "Pieces",[Total Pieces],
+			            SelectedMetric = "Sub-Themes",[Total Subthemes],
+			            [Total Sets]
+			    ),,
+			    DESC,
+			    Dense
+			)
+			```
+		formatString: 0
+		lineageTag: 6f2e5cd4-dc6a-4a84-9e61-e7d560083207
+
+	measure 'Set Rank' = ```
+			
+			VAR SelectedMetric = [Selected Metric]    
+			RETURN
+			RANKX(
+			    ALLSELECTED('lego_sets'),      
+			    [Total Max Pieces]
+			    ,,
+			    DESC,
+			    Dense
+			)
+			```
+		formatString: 0
+		lineageTag: 2cd0b0df-47f9-46ea-bcdd-559d851d6982
+
+	measure 'Metric Tooltip' = ```
+			
+			VAR SelectedMetric = [Selected Metric]
+			RETURN
+			    SWITCH(
+			        TRUE(),
+			        SelectedMetric = "# Sets","Number of Sets: " & FORMAT([Total Sets],"#,##0"),
+			        SelectedMetric = "Pieces","Number of Pieces: " & FORMAT([Pieces],"#,##0"),            
+			        SelectedMetric = "Avg Retail Price","Avg Retail Price: " & FORMAT([Avg Retail Price],"$#,##0"),
+			        SelectedMetric = "Mini Figures","Number of Mini Figures: " & FORMAT([Total Minifigs],"#,##0"),        
+			        SelectedMetric = "Sub-Themes","Number of Sub-Themes: " & FORMAT([Total Subthemes],"#,##0"),
+			        SelectedMetric = "Theme Groups","Number of Theme Groups: "& FORMAT([Total Theme Groups],"#,##0"),   
+			        SelectedMetric = "Themes","Number of Themes: "& FORMAT([Total Themes],"#,##0"),   
+			        "Number of Sets: " & FORMAT([Total Sets],"#,##0")
+			    )
+			```
+		lineageTag: 49320ca0-83a9-460e-af10-c5d78ec52a22
+
+	measure 'Theme Metric Tooltip' = ```
+			
+			VAR SelectedMetric = [Selected Metric]
+			RETURN    
+			    SWITCH(
+			        TRUE(),
+			        SelectedMetric = "# Sets","Number of Sets: " & FORMAT([Total Sets],"#,##0"),
+			        SelectedMetric = "Pieces","Number of Pieces: " & FORMAT([Pieces],"#,##0"),            
+			        SelectedMetric = "Avg Retail Price","Avg Retail Price: " & FORMAT([Avg Retail Price],"$#,##0"),
+			        SelectedMetric = "Mini Figures","Number of Mini Figures: " & FORMAT([Total Minifigs],"#,##0"),        
+			        SelectedMetric = "Sub-Themes","Number of Sub-Themes: " & FORMAT([Total Subthemes],"#,##0"),
+			        "Number of Sets: " & FORMAT([Total Sets],"#,##0")
+			    )
+			```
+		lineageTag: 9f399860-d5a2-4674-9fb7-40127e4bce0a
+
+	measure 'ScatterPlot Metric Tooltip' = ```
+			
+			VAR SelectedMetric = [Selected Metric]
+			RETURN
+			    SWITCH(
+			        TRUE(),                
+			        SelectedMetric = "Pieces","Number of Pieces: " & FORMAT([Max Pieces],"#,##0"),                    
+			        SelectedMetric = "Mini Figures","Number of Mini Figures: " & FORMAT([Max Minifigs],"#,##0"),                
+			        "Number of Pieces: " & FORMAT([Max Pieces],"#,##0")          
+			    )
+			```
+		lineageTag: ed1c6679-3805-4b35-b586-3c898d1ebb86
+
+	measure 'ScatterPlot Retail Price Tooltip' =
+			
+			"Retail Price: " & FORMAT(MAX(lego_sets[US_retailPrice]),"$#,##0")
+		lineageTag: 8d1eae58-ed0e-4b94-9413-1397b39235e2
+
+	measure 'Metric Tooltip From Table' = ```
+			
+			VAR SelectedMetric = MIN('Tooltip Table'[Index])
+			RETURN    
+			    SWITCH(
+			        TRUE(),
+			        SelectedMetric = 1, FORMAT([Total Sets],"#,##0"),
+			        SelectedMetric = 2, IF(
+			                                NOT(
+			                                    ISBLANK([Total Pieces])
+			                                ),
+			                                FORMAT([Total Pieces],"#,##0"),            
+			                                "No of Pieces Not Available"
+			                            ),
+			        SelectedMetric = 3, FORMAT([Avg Retail Price],"$#,##0"),
+			        SelectedMetric = 4, FORMAT([Total Minifigs],"#,##0"),        
+			        SelectedMetric = 5, FORMAT([Total Categories],"#,##0"),        
+			        SelectedMetric = 6, FORMAT([Total Theme Groups],"#,##0"),  
+			        SelectedMetric = 7, FORMAT([Total Themes],"#,##0"),  
+			        SelectedMetric = 8, FORMAT([Total Subthemes],"#,##0")        
+			    )
+			```
+		lineageTag: 24fc2255-26d1-464f-82fa-534eb2fc5ad2
+
+	measure 'Category Metric' = ```
+			
+			VAR SelectedMetric = [Selected Metric]
+			RETURN
+			    SWITCH(
+			        TRUE(),
+			        SelectedMetric = "# Sets",[Total Sets],
+			        SelectedMetric = "Pieces",[Pieces],            
+			        SelectedMetric = "Avg Retail Price",[Avg Retail Price],
+			        SelectedMetric = "Mini Figures",[Total Minifigs],        
+			        SelectedMetric = "Sub-Themes",[Total Subthemes],
+			        SelectedMetric = "Theme Groups",[Total Theme Groups],   
+			        SelectedMetric = "Themes",[Total Themes],        
+			        [Total Sets]
+			    )
+			```
+		lineageTag: 91cbb393-0a42-4fb4-b837-79bd703a230d
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Scatterplot Metric Tooltip From Table' = ```
+			
+			VAR SelectedMetric = MIN('Scatterplot Tooltip Table'[Index])
+			RETURN    
+			    SWITCH(
+			        TRUE(),
+			        SelectedMetric = 1, FORMAT([Total Sets],"#,##0"),
+			        SelectedMetric = 2, IF(
+			                                NOT(
+			                                    ISBLANK([Total Pieces])
+			                                ),
+			                                FORMAT([Total Pieces],"#,##0"),            
+			                                "No of Pieces Not Available"
+			                            ),
+			        SelectedMetric = 3, FORMAT([Avg Retail Price],"$#,##0"),
+			        SelectedMetric = 4, IF(
+			                                NOT(
+			                                    ISBLANK(
+			                                        [Total Minifigs]
+			                                    )
+			                                ),
+			                                FORMAT([Total Minifigs],"#,##0"),
+			                                "No Mini Figures in Set"
+			                            ),
+			        SelectedMetric = 5, MIN('Category Lookup'[category]),
+			        SelectedMetric = 6, MIN('Theme Group Lookup'[themeGroup]),
+			        SelectedMetric = 7, MIN('Theme Lookup'[theme]),
+			        SelectedMetric = 8, Min('SubTheme Lookup'[subtheme])
+			    )
+			```
+		lineageTag: 8cda69c7-df66-4f84-bd73-d9a988995b58
+
+	column Column1
+		dataType: string
+		isHidden
+		lineageTag: 862c4398-ede7-49b0-9238-de5d9843c089
+		summarizeBy: none
+		sourceColumn: Column1
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	partition '_02 - Metrics' = m
+		mode: import
+		source =
+				let
+				    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i44FAA==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Column1 = _t]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"Column1", type text}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table
+

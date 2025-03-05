@@ -1,0 +1,396 @@
+table '_03 - Data Labels & Titles'
+	lineageTag: c889b54a-76ab-4006-a904-e6f34535bd85
+
+	measure 'Metric Age Group SubTitle' = ```
+			
+			VAR SelectedMetric = [Selected Metric]
+			/*VAR SetTitle = "The 4-7 Age Group Has The Most Sets"
+			VAR AvgPriceTitle = "The 16-18 Age Group Has The Highest Avg. Retail Price."
+			VAR MiniFigtitle = "The 4-7 Age Group Has the Most Mini Figures"
+			VAR PieceTitle = "The 8-12 Age Group Has The Most Pieces"
+			VAR SubThemeTitle = "The 4-7 Age Group Has The Most Sub-Thems"
+			VAR ThemeGroupTitle = "The 4-7 Age Group Has The Most Theme Groups"*/
+			
+			VAR SetSubtitle = "Setting Records: Most Sets in the " & [Age Group Max Sets] & " Age Group"
+			VAR AvgPriceSubtitle = "Top Tier Pricing: Highest Avg. Retail Price in the "& SUBSTITUTE([Age Group Max Retail Price]," yrs","") & " Age Group"
+			VAR MiniFigSubtitle = "Mini Figure Marvel: Most in the " & [Age Group Max MiniFigs] & " Age Group"
+			VAR PieceSubtitle = "Pieces Galore: Most Pieces in the " & [Age Group Max Pieces] & " Age Group"
+			VAR SubThemeSubtitle = "Exploring Diversity: Most Sub-Themes in the " & [Age Group Max SubThemes] & " Age Group"
+			VAR ThemeGroupSubtitle = "Theme Group Triumph: Most in the " & [Age Group Max Theme Groups] & " Age Group"
+			VAR ThemeSubtitle = "Theme Insights: Analyzing Themes in the " & [Age Group Max Themes] & " Age Group"
+			
+			RETURN
+			    SWITCH(
+			        TRUE(),
+			        SelectedMetric = "# Sets",SetSubtitle,
+			        SelectedMetric = "Pieces",PieceSubtitle,
+			        SelectedMetric = "Avg Retail Price",AvgPriceSubtitle,
+			        SelectedMetric = "Mini Figures",MiniFigSubtitle,        
+			        SelectedMetric = "Sub-Themes",SubThemeSubtitle,
+			        SelectedMetric = "Theme Groups",ThemeGroupSubtitle,
+			        SelectedMetric = "Themes",ThemeSubtitle,
+			        SetSubtitle
+			    )
+			```
+		lineageTag: b4b8eaf3-60b7-4df5-9800-c2a247ef9ba6
+
+	measure 'Metric Age Group Title' = ```
+			
+			VAR SelectedMetric = [Selected Metric]
+			/*VAR SetTitle = "Which Age Group Has The Most Sets?"
+			VAR AvgPriceTitle = "Which Age Group Has The Highest Avg. Retail Price?"
+			VAR MiniFigTitle = "Which Age Group Has The most Mini Figures?"
+			VAR PieceTitle = "Which Age Group Has The Most Pieces?"
+			VAR SubThemeTitle = "Which Age Group Has The Most Sub-Themes?"
+			VAR ThemeGroupTitle = "Which Age Group Has The Most Theme Groups?"
+			*/
+			VAR SetTitle = "Exploring Sets: Most Sets in Which Age Group?"
+			VAR AvgPriceTitle = "Price Peaks: Highest Avg. Retail Price in Which Age Group?"
+			VAR MiniFigTitle = "Mini Figure Marvel: Most Mini Figures in Which Age Group?"
+			VAR PieceTitle = "Pieces Showcase: Most Pieces in Which Age Group?"
+			VAR SubThemeTitle = "Diverse Categories: Most Sub-Themes in Which Age Group?"
+			VAR ThemeGroupTitle = "Top Theme Groups in Which Age Group?" -- "Triumph: Most Theme Groups in Which Age Group?"
+			VAR ThemeTitle = "Unveiling Themes: Exploring Dominance in Age Groups"
+			RETURN
+			    SWITCH(
+			        TRUE(),
+			        SelectedMetric = "# Sets",SetTitle,        
+			        SelectedMetric = "Avg Retail Price",AvgPriceTitle,        
+			        SelectedMetric = "Mini figures",MiniFigTitle,
+			        SelectedMetric = "Pieces",PieceTitle,
+			        SelectedMetric = "Sub-Themes",SubThemeTitle,
+			        SelectedMetric = "Theme Groups",ThemeGroupTitle,
+			        SelectedMetric = "Themes",ThemeTitle,
+			        SetTitle
+			    )
+			```
+		lineageTag: fcb7f9f1-ac27-47dc-92ef-bf72f0e16445
+
+	measure 'Metric Category SubTitle' = ```
+			
+			VAR SelectedMetric = [Selected Metric]
+			/*VAR SetTitle = "The Normal Category Has By Far the Most Sets, Containing 12,757 Sets"
+			VAR AvgPriceTitle = "The Collection Category Has The Highest Average Retail Price at $45"
+			VAR PieceTitle = "The Normal Category Contains The Most Pieces, With about 2.9M Pieces"
+			VAR MiniFigtitle = "The Normal Category Contains 20,205 Mini Figures Which is The Most"
+			VAR SubThemeTitle = "The Normal Category Theme Has 670 Sub-Themes"
+			VAR ThemeGroupTitle = "The Normal Category Contains 17 Theme Groups"*/
+			
+			VAR SetSubtitle = "Prominence in " &[Category Max Sets] & " Category: " & [Max # Category Sets] & " Sets Within the " & [Category Max Sets] & " Category"
+			VAR AvgPriceSubtitle = "Elegance in " & [Category Max Retail Price] &": Highest Avg. Retail Price at " & FORMAT([Max Category Retail Price],"$#,##0")
+			VAR PieceSubtitle = [Category Max Pieces] & " Marvel: Leading with " & [Max # Category Pieces] & " Pieces in the " & [Category Max Pieces] & " Category"
+			VAR MiniFigSubtitle = "Mini Figure Mastery: " & FORMAT([Max # Category MiniFigs],"#,##0") & " Mini Figures in the " & [Category Max MiniFigs] & " Category"
+			VAR SubThemeSubtitle = "Diversity Spotlight: Currently Featuring " & FORMAT([Max # Category SubThemes],"#,##0") & " Sub-Themes in " & [Category Max SubThemes]
+			VAR ThemeGroupSubtitle = "Diverse Themes: " & FORMAT([Max # Category Theme Groups],"#,##0") &" Theme Groups Reside in the " & [Category Max Theme Groups] & " Category"
+			VAR ThemeSubtitle = "Theme Trends: Exploring the Latest Developments in Themes"
+			RETURN
+			    SWITCH(
+			        TRUE(),
+			        SelectedMetric = "# Sets",SetSubtitle,
+			        SelectedMetric = "Pieces",PieceSubtitle,
+			        SelectedMetric = "Avg Retail Price",AvgPriceSubtitle,
+			        SelectedMetric = "Mini Figures",MiniFigSubtitle,        
+			        SelectedMetric = "Sub-Themes",SubThemeSubtitle,
+			        SelectedMetric = "Theme Groups",ThemeGroupSubtitle,
+			        SelectedMetric = "Themes",ThemeSubtitle,
+			        SetSubtitle
+			    )
+			```
+		lineageTag: 1423745e-66f5-4569-9dd7-3d40d811d405
+
+	measure 'Metric Category Title' = ```
+			
+			VAR SelectedMetric = [Selected Metric]
+			/*VAR SetTitle = "Which Category Has The Most Sets?"
+			VAR AvgPriceTitle = "Which Category Has The Highest Average Retail Price?"
+			VAR MiniFigTitle = "Which Category Has The most Mini Figures?"
+			VAR PieceTitle = "Which Category Has The Most Pieces?"
+			VAR SubThemeTitle = "Which Category Has The Most Sub-Themes?"
+			VAR ThemeGroupTitle = "Which Category Has The Most Theme Groups?"*/
+			
+			VAR SetTitle = "Spotlight on Categories: Identifying the Category with the Most Sets"
+			VAR AvgPriceTitle = "Price Peaks: Uncovering the Category with the Highest Avg. Retail Price"
+			VAR MiniFigTitle = "Mini Figure Marvel: Exploring the Category with the Most Mini Figures"
+			VAR PieceTitle = "Pieces Showcase: Discovering the Category with the Most Pieces"
+			VAR SubThemeTitle = "Exploring Categories: Most Sub-Themes in a Category"
+			VAR ThemeGroupTitle = "Leading in Theme Groups: Most Within a Category"
+			VAR ThemeTitle = "Theme Insights: Analyzing the Category with the Most Themes"
+			
+			RETURN
+			    SWITCH(
+			        TRUE(),
+			        SelectedMetric = "# Sets",SetTitle,        
+			        SelectedMetric = "Avg Retail Price",AvgPriceTitle,        
+			        SelectedMetric = "Mini figures",MiniFigTitle,
+			        SelectedMetric = "Pieces",PieceTitle,
+			        SelectedMetric = "Sub-Themes",SubThemeTitle,
+			        SelectedMetric = "Theme Groups",ThemeGroupTitle,
+			        SelectedMetric = "Themes",ThemeTitle,
+			        SetTitle
+			    )
+			```
+		lineageTag: 7f0ea65a-d23c-4193-a475-69cd299a2a11
+
+	measure 'Metric Theme SubTitle' = ```
+			
+			VAR SelectedMetric = [Selected Metric]
+			/*VAR SetTitle = "The Gear Theme Contains The Most Sets with 2,832 Sets"
+			VAR PieceTitle = "The Star Wars Theme Contains The Most Pieces, With 340,136 Pieces"
+			VAR AvgPriceTitle = "The Serious Play Theme Has The Highest Average Retail Price at $517"
+			VAR MiniFigtitle = "The Star Wars Theme Contains 2,108 Mini Figures Which is The Most"
+			VAR SubThemeTitle = "The Gear Theme Has By Far the Most Sub-Themes at 167"
+			VAR ThemeGroupTitle = "All Sets Appear in one Theme Group"*/
+			
+			VAR SetSubtitle = "Unveiling the Gear Theme: Dominating with 2,832 Sets"
+			VAR PieceSubtitle = "Star Wars Spectacle: Leading with 340,136 Pieces"
+			VAR AvgPriceSubtitle = "Serious Play Elegance: Highest Avg. Retail Price at $517"
+			VAR MiniFigSubtitle = "Star Wars Marvel: Boasting 2,108 Mini Figures, the Highest"
+			VAR SubThemeSubtitle = "Gearing Up: The Gear Theme Excels with 167 Sub-Themes"
+			VAR ThemeGroupSubtitle = "Unified Harmony: All Sets Belong to a Single Theme Group"
+			
+			
+			RETURN
+			    SWITCH(
+			        TRUE(),
+			        SelectedMetric = "# Sets",SetSubtitle,
+			        SelectedMetric = "Pieces",PieceSubtitle,
+			        SelectedMetric = "Avg Retail Price",AvgPriceSubtitle,
+			        SelectedMetric = "Mini Figures",MiniFigSubtitle,        
+			        SelectedMetric = "Sub-Themes",SubThemeSubtitle,
+			--        SelectedMetric = "Theme Groups",ThemeGroupSubtitle, -- This is not needed as it was removed as it's a poor metric
+			        SetSubTitle
+			    )
+			```
+		lineageTag: 215f8d35-43a5-420b-8aa1-76eff6e47e33
+
+	measure 'Metric Theme Title' = ```
+			
+			VAR SelectedTopN = 
+			    FORMAT(
+			    IF(
+			        ISBLANK(
+			            [Selected TopN]
+			        ),
+			        3,
+			        [Selected TopN]
+			    ),
+			    "0"
+			    )
+			VAR SelectedMetric = [Selected Metric]
+			/*VAR SetTitle = "Which of the Top " & SelectedTopN & " Themes Has The Most Sets?"
+			VAR AvgPriceTitle = "Which Top 5 Theme Has The Highest Average Retail Price?"
+			VAR MiniFigTitle = "Which Theme Has The most Mini Figures?"
+			VAR PieceTitle = "Which of The Top 5 Themes Has The Most Pieces?"
+			VAR SubThemeTitle = "Which Theme Has The Most Sub-Themes?"*/
+			
+			VAR SetTitle = "Exploring Sets: Top " & SelectedTopN & " Themes with the Highest Sets"
+			VAR AvgPriceTitle = "Analyzing Prices: Top " & SelectedTopN & " Themes with the Highest Average Retail Price"
+			VAR MiniFigTitle = "Mini Figure Spotlight: Top "  & SelectedTopN & " Themes with the Most Mini Figures"
+			VAR PieceTitle = "Pieces Galore: Top " & SelectedTopN & " Themes with the Most Pieces"
+			VAR SubThemeTitle = "Diving into Variety: Theme with the Most Sub-Themes"
+			RETURN
+			    SWITCH(
+			        TRUE(),
+			        SelectedMetric = "# Sets",SetTitle,        
+			        SelectedMetric = "Avg Retail Price",AvgPriceTitle,        
+			        SelectedMetric = "Mini figures",MiniFigTitle,
+			        SelectedMetric = "Pieces",PieceTitle,
+			        SelectedMetric = "Sub-Themes",SubThemeTitle,        
+			        SetTitle
+			    )
+			```
+		lineageTag: cc47ae72-74db-42c8-9d7c-92c50fc4c1c6
+
+	measure 'Metric Year SubTitle' = ```
+			
+			VAR SelectedMetric = [Selected Metric]
+			/*VAR SetTitle = "2022 Had The Most Sets Released at 967 Sets"
+			VAR PieceTitle = "2022 Had The Higest Number of Pieces Released at 279,697 Pieces"
+			VAR AvgPriceTitle = "2003 Saw a drop in Average Retail Price But Have Recovered Since"
+			VAR MiniFigtitle = "2021 Saw the Highest Number of Mini Figures Released with 1,254"
+			VAR SubThemeTitle = "The Current Number of Sub-Themes is 205 Sub-Themes"
+			VAR ThemeGroupTitle = "After a Peak in 2003, The Current number of Theme Groups is 10"*/
+			VAR SetSubtitle = "A Record Year: " & FORMAT([Max # Sets],"#,###") & " Sets Released in " & FORMAT([Max Sets Year],"0")
+			VAR PieceSubtitle = "Setting Records: " & FORMAT([Max # Pieces], "#,##0") & " Pieces Released in " & FORMAT([Max Pieces Year],"0")
+			VAR AvgPriceSubtitle = "Navigating Trends: Average Retail Prices Recovered Since 2003"
+			VAR MiniFigSubtitle = "Mini Figure Milestone: " & FORMAT([Max # MiniFigs],"#,##0") & " Released in " & FORMAT([Max MiniFigs Year],"0")
+			VAR SubThemeSubtitle = "Diverse Offerings: Currently Featuring " & FORMAT([Current # SubThemes],"#,##0") & " Sub-Themes"
+			VAR ThemeGroupSubtitle = "From a Peak in 2003: Presently " & FORMAT([Current # Theme Groups],"#,##0") & " Theme Groups Exist"
+			VAR CategorySubtitle = "Category Highlights: Categories Leveled out at " & FORMAT([Current # Categories],"#,##0")
+			VAR ThemeSubtitle = "Theme Trends: Exploring the Latest Developments in Themes" -- Themes Peaked in " & FORMAT([Max Themes Year],"0") -- Removed because it makes the subtitle too long
+			RETURN
+			    SWITCH(
+			        TRUE(),
+			        SelectedMetric = "# Sets",SetSubtitle,
+			        SelectedMetric = "Pieces",PieceSubtitle,
+			        SelectedMetric = "Avg Retail Price",AvgPriceSubtitle,
+			        SelectedMetric = "Mini Figures",MiniFigSubtitle,        
+			        SelectedMetric = "Sub-Themes",SubThemeSubtitle,
+			        SelectedMetric = "Theme Groups",ThemeGroupSubtitle,
+			        SelectedMetric = "Themes",ThemeSubtitle,
+			        SelectedMetric = "Categories",CategorySubtitle,
+			        SetSubtitle
+			    )
+			```
+		lineageTag: 594668d3-569a-4a4b-bf7e-44c99db0d8a2
+
+	measure 'Metric Year Title' =
+			
+			VAR SelectedMetric = [Selected Metric]
+			/*VAR SetTitle = "How Did the Number of Sets Increase Each Year?"
+			VAR PieceTitle = "How Did the Number of Pieces Per Set Increase Each Year?"
+			VAR AvgPriceTitle = "How Did the Average Retail Price Increase Each Year?"
+			VAR MiniFigtitle = "Did The Number of Mini Figures Released Increase Each Year?"
+			VAR CategoryTitle = "Did The Number of Categories Increase Each Year?"
+			VAR SubThemeTitle = "Did The Number of Sub-Themes Increase Each Year?"
+			VAR ThemeGroupTitle = "Did the Number of Theme Groups Increase Each Year?"*/
+			VAR SetTitle = "Exploring the Yearly Growth in Set Numbers"
+			VAR PieceTitle = "Analyzing the Annual Rise in Pieces Per Set"
+			VAR AvgPriceTitle = "Understanding the Yearly Increase in Average Retail Prices"
+			VAR MiniFigTitle = "Tracking the Growth in Mini Figures Released Each Year"
+			VAR CategoryTitle = "Examining the Yearly Expansion of Categories"
+			VAR SubThemeTitle = "Investigating the Annual Growth in Sub-Themes"
+			VAR ThemeGroupTitle = "Observing the Increase in Theme Groups Each Year"
+			VAR ThemeTitle = "Exploring the Yearly Trends in Themes"
+			RETURN
+			    SWITCH(
+			        TRUE(),
+			        SelectedMetric = "# Sets",SetTitle,
+			        SelectedMetric = "Pieces",PieceTitle,
+			        SelectedMetric = "Avg Retail Price",AvgPriceTitle,
+			        SelectedMetric = "Mini Figures",MiniFigtitle,
+			        SelectedMetric = "Categories",CategoryTitle,
+			        SelectedMetric = "Sub-Themes",SubThemeTitle,
+			        SelectedMetric = "Theme Groups",ThemeGroupTitle,
+			        SelectedMetric = "Themes",ThemeTitle,
+			        SetTitle
+			    )
+		lineageTag: 2b71fcd1-55a6-41d6-a112-369a9e5c0c30
+
+	measure 'ScatterPlot Metric SubTitle' = ```
+			
+			VAR SelectedMetric = [Selected Metric]
+			/*VAR PieceTitle = "Generally The Number of Prices Affects the Retail Price Of a Set"
+			VAR MinifigTitle = "There Is a Weak Correlation Between Price And Mini Figures In a Set."*/
+			VAR PieceSubtitle = "Observing Trends: Influence of Piece Count on Set Retail Price"
+			VAR MinifigSubtitle = "Exploring Connections: Weak Correlation Between Price and Mini Figures"
+			RETURN
+			    IF(
+			        SelectedMetric = 
+			        "Mini Figures", 
+			        MinifigSubtitle,
+			        PieceSubtitle
+			    )
+			
+			
+			```
+		lineageTag: 9fb1d34d-f6ad-480f-891f-12e2f2b8407e
+
+	measure 'ScatterPlot Metric Title' = ```
+			
+			VAR SelectedMetric = [Selected Metric]
+			VAR PieceTitle = "Does The Price Of a Set Increase With the Number of Pieces?"
+			VAR MinifigTitle = "Does The Price of a Set Increase With the Number of Mini Figures?"
+			RETURN
+			    IF(
+			        SelectedMetric = 
+			        "Mini Figures", 
+			        MinifigTitle,
+			        PieceTitle
+			    )
+			
+			
+			```
+		lineageTag: 9c545cd7-5015-4b8b-9411-3c922fdce49b
+
+	measure 'Theme Metric Data Labels' = ```
+			
+			VAR SelectedMetric = [Selected Metric]
+			VAR CurrentMetric = 
+			    SWITCH(
+			        TRUE(),
+			        SelectedMetric = "Pieces",[Pieces],
+			        SelectedMetric = "Avg Retail Price",[Avg Retail Price],
+			        SelectedMetric = "Mini Figures",[Total Minifigs],
+			        SelectedMetric = "Sub-Themes",[Total Subthemes],
+			        [Total Sets]
+			    )
+			VAR FormattedString = 
+			    IF(SelectedMetric = "Avg Retail Price",
+			        FORMAT(CurrentMetric,"$#,##0"),
+			        SWITCH(
+			            TRUE(),
+			            CurrentMetric >= 1000000, FORMAT(CurrentMetric / 1000000,"#,##0.0M"), 
+			            CurrentMetric >= 1000, FORMAT(CurrentMetric / 1000,"#,##0.0K"), 
+			            FORMAT(CurrentMetric,"#,##0")    
+			        )
+			    )
+			RETURN
+			    FormattedString
+			```
+		lineageTag: 3e934364-cb34-4f39-946d-f8a901da4059
+
+	measure 'Metric Data Labels' = ```
+			
+			SWITCH(
+			    TRUE(),
+			    [Metric] >= 1000000, FORMAT([Metric] / 1000000,"#,##0.0M"), 
+			    [Metric] >= 1000, FORMAT([Metric] / 1000,"#,##0.0K"), 
+			    FORMAT([Metric],"#,##0")    
+			)
+			```
+		lineageTag: 62fffa5f-52a2-4246-9d81-432eb2c9c20f
+
+	measure 'Category Tooltip Title' =
+			
+			"Category: " & MIN('Category Lookup'[category])
+		lineageTag: 964ed513-8399-42fb-8dd8-3f598fa409a1
+
+	measure 'Age Group Tooltip Title' =
+			
+			"Age Group: " & MIN(lego_sets[Age Group])
+		lineageTag: 802c5f3f-41a7-409a-8904-4bfee6d0f10b
+
+	measure 'Set Name Tooltip Title' =
+			
+			"Set Name: " & MIN('lego_sets'[name])
+		lineageTag: edd29981-38af-4b94-b7b6-82f827210bdb
+
+	measure 'Theme Name Tooltip Title' =
+			
+			"Theme Name: " & MIN('Theme Lookup'[theme])
+		lineageTag: 1c78edd9-d9e9-47a9-a4b0-c990d9380027
+
+	measure 'Category Metric Data Labels' = ```
+			
+			SWITCH(
+			    TRUE(),
+			    [Category Metric] >= 1000000, FORMAT([Category Metric] / 1000000,"#,##0.0M"), 
+			    [Category Metric] >= 1000, FORMAT([Category Metric] / 1000,"#,##0.0K"), 
+			    FORMAT([Category Metric],"#,##0")    
+			)
+			```
+		lineageTag: 91920d19-5c93-4bf9-adb7-45775ba2722d
+
+	column Column1
+		dataType: string
+		isHidden
+		lineageTag: 3bd87205-d894-4f38-8731-9390d6233179
+		summarizeBy: none
+		sourceColumn: Column1
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	partition '_03 - Data Labels & Titles' = m
+		mode: import
+		source =
+				let
+				    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i44FAA==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Column1 = _t]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"Column1", type text}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table
+

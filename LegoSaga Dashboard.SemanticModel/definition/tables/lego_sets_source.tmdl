@@ -1,0 +1,127 @@
+table lego_sets_source
+	lineageTag: 3ce67b87-9208-4863-8ffc-acf3bc834ebe
+
+	column Column1
+		dataType: string
+		lineageTag: decc981d-78e0-435d-8970-37498dd42456
+		summarizeBy: none
+		sourceColumn: Column1
+
+		annotation SummarizationSetBy = Automatic
+
+	column Column2
+		dataType: string
+		lineageTag: 4049f7e5-9c2e-4537-885b-db0ab645da4c
+		summarizeBy: none
+		sourceColumn: Column2
+
+		annotation SummarizationSetBy = Automatic
+
+	column Column3
+		dataType: string
+		lineageTag: 7c7495d6-a7da-47ab-904c-9160dffe01f6
+		summarizeBy: none
+		sourceColumn: Column3
+
+		annotation SummarizationSetBy = Automatic
+
+	column Column4
+		dataType: string
+		lineageTag: ccbf4569-b349-4b09-8cd4-fc6d50920cb0
+		summarizeBy: none
+		sourceColumn: Column4
+
+		annotation SummarizationSetBy = Automatic
+
+	column Column5
+		dataType: string
+		lineageTag: 9c2c8880-b17d-4161-8b11-f35fe406fd8f
+		summarizeBy: none
+		sourceColumn: Column5
+
+		annotation SummarizationSetBy = Automatic
+
+	column Column6
+		dataType: string
+		lineageTag: e2ef2035-1d1d-46e8-9b2f-2d98f3fed575
+		summarizeBy: none
+		sourceColumn: Column6
+
+		annotation SummarizationSetBy = Automatic
+
+	column Column7
+		dataType: string
+		lineageTag: b4cf4849-a875-49aa-ba5b-c3e281b222d3
+		summarizeBy: none
+		sourceColumn: Column7
+
+		annotation SummarizationSetBy = Automatic
+
+	column Column8
+		dataType: string
+		lineageTag: f24549e4-df8b-4663-948a-558df6ec3ce2
+		summarizeBy: none
+		sourceColumn: Column8
+
+		annotation SummarizationSetBy = Automatic
+
+	column Column9
+		dataType: string
+		lineageTag: fe77ce5f-2e92-486b-a606-025ea6b416cb
+		summarizeBy: none
+		sourceColumn: Column9
+
+		annotation SummarizationSetBy = Automatic
+
+	column Column10
+		dataType: string
+		lineageTag: c663a369-6a1a-4b35-914e-2126c4368771
+		summarizeBy: none
+		sourceColumn: Column10
+
+		annotation SummarizationSetBy = Automatic
+
+	column Column11
+		dataType: string
+		lineageTag: 9f79179e-a63d-4b3c-bfd2-98fb7c5bd9c5
+		summarizeBy: none
+		sourceColumn: Column11
+
+		annotation SummarizationSetBy = Automatic
+
+	column Column12
+		dataType: string
+		lineageTag: be5f8173-4c72-4632-b683-244e97e3e850
+		summarizeBy: none
+		sourceColumn: Column12
+
+		annotation SummarizationSetBy = Automatic
+
+	column Column13
+		dataType: string
+		lineageTag: 95618246-70ab-427f-9e42-d5e38c5b06bc
+		summarizeBy: none
+		sourceColumn: Column13
+
+		annotation SummarizationSetBy = Automatic
+
+	column Column14
+		dataType: string
+		lineageTag: 1f24a26f-3951-424e-8a91-4646babddbd5
+		summarizeBy: none
+		sourceColumn: Column14
+
+		annotation SummarizationSetBy = Automatic
+
+	partition lego_sets_source = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(#"File Path"),[Delimiter=",", Columns=14, Encoding=65001, QuoteStyle=QuoteStyle.None])
+				in
+				    Source
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

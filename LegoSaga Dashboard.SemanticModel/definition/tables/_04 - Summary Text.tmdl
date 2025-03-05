@@ -1,0 +1,293 @@
+table '_04 - Summary Text'
+	lineageTag: e001356c-b01e-458e-ba58-6f8a3a3a2635
+
+	measure 'Years of Sets' = ```
+			
+			MAX('lego_sets'[year]) - 
+			Min(lego_sets[year])+1
+			```
+		formatString: 0
+		lineageTag: ea79fe04-8b40-438d-8838-daf8a96fd480
+
+	measure 'Max Sets Year' =
+			
+			TOPN(
+			    1,
+			    VALUES(lego_sets[year]),
+			    [Total Sets],DESC
+			)
+		formatString: 0
+		lineageTag: 71760ff9-8a20-4176-bef5-a0d99bb960eb
+
+	measure 'Max # Sets' =
+			
+			VAR YearMostSets = [Max Sets Year]
+			RETURN
+			CALCULATE(
+			    [Total Sets],
+			    lego_sets[year] = YearMostSets
+			)
+		formatString: #,0
+		lineageTag: a12b5ac0-2986-4f84-b0d5-5fe29ae7207f
+
+	measure 'Min Sets Year' =
+			
+			TOPN(
+			    1,
+			    VALUES(lego_sets[year]),
+			    [Total Sets],ASC
+			)
+		formatString: 0
+		lineageTag: cd32e3a5-cf1a-4daa-aeca-83cc1ad81dc9
+
+	measure 'Min # Sets' =
+			
+			VAR YearLeastSets = [Min Sets Year]
+			RETURN
+			CALCULATE(
+			    [Total Sets],
+			    lego_sets[year] = YearLeastSets
+			)
+		formatString: 0
+		lineageTag: 74da5907-6c64-4626-b44c-8004d15f207c
+
+	measure 'Max Pieces Set' =
+			
+			VAR MaxPieces = [Max Pieces]
+			RETURN
+			CALCULATE(
+			    MIN(
+			        lego_sets[name]
+			    ),
+			    lego_sets[pieces] = MaxPieces
+			)
+		lineageTag: 52b18cf3-a6ac-4e11-a613-55aee3b43587
+
+	measure 'Max Pieces' =
+			
+			MAX('lego_sets'[pieces])
+		formatString: #,0
+		lineageTag: eaa358e5-26cf-4e75-9a0c-cf3bf5fdc0a0
+
+	measure 'Max Price' = ```
+			
+			MAX(
+			    lego_sets[US_retailPrice]
+			)
+			
+			```
+		formatString: \$#,0;(\$#,0);\$#,0
+		lineageTag: 53aa1c1d-7168-43b8-9b19-c86c21866ddc
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	measure '1st Minifigs Year' =
+			
+			CALCULATE(
+			    MIN(
+			        lego_sets[year]
+			    ),
+			    lego_sets[minifigs] > 0
+			)
+		formatString: 0
+		lineageTag: bb35ddfb-1491-4619-abda-e7137efbd397
+
+	measure 'Years of MiniFigs' = ```
+			
+			MAX(
+			    lego_sets[year] 
+			) - 
+			[1st Minifigs Year]+1
+			```
+		formatString: 0
+		lineageTag: 6bbe63ea-4321-4749-afe0-0d4eabd2cbf6
+
+	measure '% Set Growth' = ```
+			
+			VAR Difference = 
+			    [Max # Sets] - 
+			    [Min # Sets]
+			RETURN
+			FORMAT(
+			DIVIDE(
+			    Difference,
+			    [Min # Sets]
+			),
+			"#,##0%")
+			```
+		lineageTag: f689d716-2b53-4f1b-a6c2-8a6d8a3d51dd
+
+	measure 'Max Pieces Year' =
+			
+			TOPN(
+			    1,
+			    VALUES(lego_sets[year]),
+			    [Total Pieces],DESC
+			)
+		formatString: 0
+		lineageTag: 24d28f78-3044-4c3a-9ab4-72740fbefc3f
+
+	measure 'Max # Pieces' =
+			
+			VAR YearMostPieces = [Max Pieces Year]
+			RETURN
+			CALCULATE(
+			    [Total Pieces],
+			    lego_sets[year] = YearMostPieces
+			)
+		formatString: 0
+		lineageTag: d9d30d46-49a5-44b4-9b9e-070e96fc71f7
+
+	measure 'Max MiniFigs Year' =
+			
+			TOPN(
+			    1,
+			    VALUES(lego_sets[year]),
+			    [Total Minifigs],DESC
+			)
+		formatString: 0
+		lineageTag: f526a60f-8762-474c-bb2a-c6f13cf500c9
+
+	measure 'Max # MiniFigs' =
+			
+			VAR YearMostMiniFigs = [Max MiniFigs Year]
+			RETURN
+			CALCULATE(
+			    [Total Minifigs],
+			    lego_sets[year] = YearMostMiniFigs
+			)
+		formatString: 0
+		lineageTag: 2d2f3b3d-8411-492d-8627-cd59ea080e1c
+
+	measure 'Expensive Set 1 ID' =
+			
+			CALCULATE(
+			    MAXX(
+			        TOPN(1, 'lego_sets', 'lego_sets'[pieces], DESC),
+			        'lego_sets'[set_id]
+			    ),
+			    'lego_sets'[US_RetailPrice] = MAX('lego_sets'[US_RetailPrice])
+			)
+		lineageTag: 69089c8c-c689-4c57-8fa9-11caf5e346dc
+
+	measure 'Expensive Set 1 Name' =
+			
+			VAR SetID = [Expensive Set 1 ID]
+			RETURN
+			CALCULATE(
+			    MIN(
+			        'lego_sets'[name]
+			    ),
+			    lego_sets[set_id] = SetID
+			)
+		lineageTag: 50047c9c-149e-4cbe-b5cd-2093fc8469e0
+
+	measure 'Expensive Set 1 Pieces' =
+			
+			VAR SetID = [Expensive Set 1 ID]
+			RETURN
+			CALCULATE(
+			    MIN(
+			        'lego_sets'[pieces]
+			    ),
+			    lego_sets[set_id] = SetID
+			)
+		formatString: #,0
+		lineageTag: 2299660f-cbac-40e3-9f73-9ec1d583b6ad
+
+	measure 'Expensive Set 2 ID' =
+			
+			CALCULATE(
+			    MAXX(
+			        TOPN(1, 'lego_sets', 'lego_sets'[pieces], ASC),
+			        'lego_sets'[set_id]
+			    ),
+			    'lego_sets'[US_RetailPrice] = MAX('lego_sets'[US_RetailPrice])
+			)
+		lineageTag: e3c61233-66db-4e9f-8c70-09fe723a88c8
+
+	measure 'Expensive Set 2 Name' =
+			
+			VAR SetID = [Expensive Set 2 ID]
+			RETURN
+			CALCULATE(
+			    MIN(
+			        'lego_sets'[name]
+			    ),
+			    lego_sets[set_id] = SetID
+			)
+		lineageTag: a06a0f42-abab-4e36-b0c4-04d5a3df9665
+
+	measure 'Expensive Set 2 Pieces' =
+			
+			VAR SetID = [Expensive Set 2 ID]
+			RETURN
+			CALCULATE(
+			    MIN(
+			        'lego_sets'[pieces]
+			    ),
+			    lego_sets[set_id] = SetID
+			)
+		formatString: #,0
+		lineageTag: 6469de9c-d204-4c4a-991d-c510b8079538
+
+	measure 'Min MiniFigs Year' = ```
+			
+			VAR FilteredMiniFigYears = 
+			CALCULATETABLE(
+			    VALUES(lego_sets[year]),
+			    lego_sets[minifigs] > 0
+			)
+			RETURN
+			TOPN(
+			    1,
+			    FilteredMiniFigYears,
+			    [Total Minifigs],ASC
+			)
+			```
+		formatString: 0
+		lineageTag: 1d3cb7bb-d945-4359-9008-535e0a6f8f21
+
+	measure 'Max Themes Year' =
+			
+			TOPN(
+			    1,
+			    VALUES(lego_sets[year]),
+			    [Total Themes]+RAND()/1000,DESC
+			)
+		formatString: 0
+		lineageTag: 893946f1-61a9-4ee3-a943-646936396c1d
+
+	measure 'Min # MiniFigs' =
+			
+			VAR YearLeastMiniFigs = [Min MiniFigs Year]
+			RETURN
+			CALCULATE(
+			    [Total Minifigs],
+			    lego_sets[year] = YearLeastMiniFigs
+			)
+		formatString: 0
+		lineageTag: 68597f6b-671b-4698-adad-3235afd1ab51
+
+	column Column1
+		dataType: string
+		isHidden
+		lineageTag: 83e9e309-4b46-4c7f-95cd-e132957f3ad0
+		summarizeBy: none
+		sourceColumn: Column1
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	partition '_04 - Summary Text' = m
+		mode: import
+		source =
+				let
+				    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i44FAA==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Column1 = _t]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"Column1", type text}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table
+

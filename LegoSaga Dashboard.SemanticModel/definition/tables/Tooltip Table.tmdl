@@ -1,0 +1,34 @@
+table 'Tooltip Table'
+	lineageTag: 8db3f3e2-38bc-49f2-b184-439bed4d34c8
+
+	column Index
+		dataType: int64
+		formatString: 0
+		lineageTag: 00f1d101-29a6-44f1-9453-e2d5f2b90f9f
+		summarizeBy: sum
+		sourceColumn: Index
+
+		annotation SummarizationSetBy = Automatic
+
+	column Metric
+		dataType: string
+		lineageTag: e7025f31-4102-4509-82e3-aa6c39b04752
+		summarizeBy: none
+		sourceColumn: Metric
+		sortByColumn: Index
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Tooltip Table' = m
+		mode: import
+		source =
+				let
+				    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i45WMlTSUfIrzU1KLVLIT1MITi0ptlKK1YlWMkIRD8hMTU6FyhgDZRzL0hWCUksSM3MUAooyk1MhMiYoenwz8zIV3DLTS4tgOk1R5J0TS1LT84syYbJmKLIhGam5qQruRfmlBVB5c0x5qIwFqh9Kk3ThsrEA", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Index = _t, Metric = _t]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"Index", Int64.Type}, {"Metric", type text}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table
+

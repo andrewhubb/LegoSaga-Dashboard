@@ -1,0 +1,39 @@
+table 'SubTheme Lookup'
+	lineageTag: 5c41330f-2211-426f-93be-bfa352186fec
+
+	column 'SubTheme ID'
+		dataType: int64
+		formatString: 0
+		lineageTag: acaecf4c-fd40-49f9-846d-3cb775c95a96
+		summarizeBy: none
+		sourceColumn: SubTheme ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column subtheme
+		dataType: string
+		lineageTag: c9aafc3a-832e-45e8-9c84-1d86cf25ad13
+		summarizeBy: none
+		sourceColumn: subtheme
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'SubTheme Lookup' = m
+		mode: import
+		source =
+				let
+				    Source = lego_sets_source,
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Removed Other Columns" = Table.SelectColumns(#"Promoted Headers",{"subtheme"}),
+				    #"Removed Duplicates" = Table.Distinct(#"Removed Other Columns"),
+				    #"Added Index" = Table.AddIndexColumn(#"Removed Duplicates", "Index", 1, 1, Int64.Type),
+				    #"Renamed Columns" = Table.RenameColumns(#"Added Index",{{"Index", "SubTheme ID"}}),
+				    #"Reordered Columns" = Table.ReorderColumns(#"Renamed Columns",{"SubTheme ID", "subtheme"}),
+				    #"Replaced Value" = Table.ReplaceValue(#"Reordered Columns","","No SubTheme",Replacer.ReplaceValue,{"subtheme"})
+				in
+				    #"Replaced Value"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

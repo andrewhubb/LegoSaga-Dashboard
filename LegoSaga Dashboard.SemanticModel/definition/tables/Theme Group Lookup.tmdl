@@ -1,0 +1,40 @@
+table 'Theme Group Lookup'
+	lineageTag: 9254058b-58ca-49f3-ae8b-02d3c07dfb4a
+
+	column 'ThemeGroup ID'
+		dataType: int64
+		formatString: 0
+		lineageTag: c87afd86-813c-418f-8d38-3447aa616d38
+		summarizeBy: none
+		sourceColumn: ThemeGroup ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column themeGroup
+		dataType: string
+		lineageTag: 997ac2cd-ca7b-4bdf-9308-dca8ba598931
+		summarizeBy: none
+		sourceColumn: themeGroup
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Theme Group Lookup' = m
+		mode: import
+		source =
+				let
+				    Source = lego_sets_source,
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"set_id", type text}, {"name", type text}, {"year", Int64.Type}, {"theme", type text}, {"subtheme", type text}, {"themeGroup", type text}, {"category", type text}, {"pieces", Int64.Type}, {"minifigs", type text}, {"agerange_min", type text}, {"US_retailPrice", type text}, {"bricksetURL", type text}, {"thumbnailURL", type text}, {"imageURL", type text}}),
+				    #"Replaced Value" = Table.ReplaceValue(#"Changed Type","","No SubTheme",Replacer.ReplaceValue,{"subtheme"}),
+				    #"Removed Other Columns" = Table.SelectColumns(#"Replaced Value",{"themeGroup"}),
+				    #"Removed Duplicates" = Table.Distinct(#"Removed Other Columns"),
+				    #"Added Index" = Table.AddIndexColumn(#"Removed Duplicates", "Index", 1, 1, Int64.Type),
+				    #"Reordered Columns" = Table.ReorderColumns(#"Added Index",{"Index", "themeGroup"}),
+				    #"Renamed Columns" = Table.RenameColumns(#"Reordered Columns",{{"Index", "ThemeGroup ID"}})
+				in
+				    #"Renamed Columns"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+
